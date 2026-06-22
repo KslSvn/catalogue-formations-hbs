@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TP Assistant Ressources Humaines – Niveau 5 | Homneo Business School</title>
+
+  <!-- Homneo Design System — Webfonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================================================================
+       HOMNEO DESIGN TOKENS
+       ===================================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* Palette brute */
+      --navy-50:  #F1F5F9;
+      --navy-100: #E2E8F0;
+      --navy-200: #CBD5E1;
+      --navy-300: #94A3B8;
+      --navy-400: #64748B;
+      --navy-500: #475569;
+      --navy-600: #334155;
+      --navy-700: #1E293B;
+      --navy-800: #111827;
+      --navy-900: #091222;
+
+      --gold-50:  #FDFBF7;
+      --gold-100: #FBF4E6;
+      --gold-300: #EAD198;
+      --gold-500: #D9A74A;
+      --gold-600: #C5A059;
+      --gold-700: #9C7A3C;
+
+      --cyan-500: #14B2D4;
+      --cyan-600: #0E90AE;
+      --cyan-700: #117288;
+
+      --white:  #FFFFFF;
+      --paper:  #F8FAFC;
+      --mist:   #F1F5F9;
+      --ink:    #1E293B;
+
+      /* Filière RH */
+      --fil-rh:     #00AEC7;
+      --fil-rh-fg:  #04788A;
+      --fil-rh-bg:  #E0F6F9;
+
+      /* Sémantique */
+      --success:    #10B981;
+      --success-bg: #ECFDF5;
+      --success-fg: #047857;
+
+      /* Rôles */
+      --color-primary:          var(--navy-800);
+      --color-primary-hover:    var(--navy-900);
+      --color-secondary:        var(--cyan-500);
+      --color-secondary-hover:  var(--cyan-600);
+      --color-excellence:       var(--gold-500);
+      --color-excellence-hover: var(--gold-600);
+
+      --bg-canvas:    var(--paper);
+      --bg-surface:   var(--white);
+      --bg-inverse:   var(--navy-800);
+
+      --fg-strong:    var(--navy-800);
+      --fg-default:   var(--navy-700);
+      --fg-muted:     var(--navy-400);
+      --fg-on-dark:   var(--white);
+      --fg-link:      var(--cyan-600);
+
+      --border-subtle:  var(--navy-100);
+      --border-default: var(--navy-200);
+      --ring:           var(--gold-500);
+
+      /* Typography */
+      --font-display: 'Montserrat', system-ui, sans-serif;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      --text-xs:   0.75rem;
+      --text-sm:   0.875rem;
+      --text-base: 1rem;
+      --text-lg:   1.25rem;
+      --text-xl:   1.563rem;
+      --text-2xl:  1.953rem;
+      --text-3xl:  2.441rem;
+
+      /* Spacing */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.5rem;
+      --space-6: 2rem;
+      --space-7: 3rem;
+      --space-8: 4rem;
+
+      /* Radii */
+      --radius-sm:  4px;
+      --radius-md:  6px;
+      --radius-lg:  8px;
+      --radius-xl:  12px;
+      --radius-full: 999px;
+
+      /* Shadows */
+      --shadow-xs: 0 1px 2px rgba(15,30,54,.06);
+      --shadow-sm: 0 1px 3px rgba(15,30,54,.08), 0 1px 2px rgba(15,30,54,.04);
+      --shadow-md: 0 4px 12px rgba(15,30,54,.08), 0 2px 4px rgba(15,30,54,.04);
+      --shadow-lg: 0 12px 28px rgba(15,30,54,.12), 0 4px 8px rgba(15,30,54,.05);
+      --shadow-gold: 0 6px 18px rgba(217,167,74,.28);
+
+      --ease: cubic-bezier(.4,0,.2,1);
+      --dur: 200ms;
+    }
+
+    /* =====================================================================
+       BASE
+       ===================================================================== */
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: var(--fg-default);
+      background: var(--bg-canvas);
+    }
+
+    a { color: var(--fg-link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    :where(a, button, input, [tabindex]):focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--gold-500);
+      border-radius: var(--radius-sm);
+    }
+
+    /* =====================================================================
+       TOPBAR / NAVBAR
+       ===================================================================== */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,24,39,.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--space-8);
+    }
+
+    .topbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .topbar-logo img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .topbar-nav {
+      display: flex;
+      gap: var(--space-6);
+      list-style: none;
+    }
+
+    .topbar-nav a {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: rgba(255,255,255,.7);
+      text-decoration: none;
+      transition: color var(--dur) var(--ease);
+    }
+    .topbar-nav a:hover { color: var(--white); }
+
+    .topbar-cta {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--navy-800);
+      background: var(--gold-500);
+      padding: 0.45em 1.2em;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+    }
+    .topbar-cta:hover {
+      background: var(--gold-600);
+      box-shadow: var(--shadow-gold);
+      text-decoration: none;
+    }
+
+    /* =====================================================================
+       HERO / INTRO BANNER
+       ===================================================================== */
+    .hero {
+      background: var(--navy-800);
+      color: var(--white);
+      padding: var(--space-7) var(--space-8) var(--space-6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Motif décoratif discret */
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 360px; height: 360px;
+      top: -120px; right: -80px;
+      border: 1.5px solid rgba(20,178,212,.12);
+    }
+    .hero::after {
+      width: 200px; height: 200px;
+      bottom: -60px; right: 120px;
+      border: 1.5px solid rgba(217,167,74,.1);
+    }
+
+    /* Liseré Or — signature de marque */
+    .hero-border {
+      height: 5px;
+      background: var(--gold-500);
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: var(--space-3);
+    }
+    .hero-eyebrow .sep { opacity: .35; }
+
+    .hero-filiere {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #A5E5F1;
+      background: rgba(0,174,199,.18);
+      padding: 0.3em 0.75em;
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(0,174,199,.35);
+    }
+    .hero-filiere::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--fil-rh);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-3xl);
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin: var(--space-3) 0 var(--space-3);
+    }
+
+    .hero-sub {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,.75);
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.3em 0.8em;
+      border-radius: var(--radius-md);
+    }
+    .tag-level   { background: var(--gold-500); color: var(--navy-800); }
+    .tag-rncp    { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.25); }
+    .tag-cpf     { background: var(--success-bg); color: var(--success-fg); border: 1px solid rgba(16,185,129,.3); }
+    .tag-vae     { background: rgba(255,255,255,.07); color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.15); }
+
+    /* =====================================================================
+       PAGE LAYOUT
+       ===================================================================== */
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-7) var(--space-8);
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: var(--space-8);
+      align-items: start;
+    }
+
+    /* =====================================================================
+       SECTIONS PRINCIPALES
+       ===================================================================== */
+    .section { margin-bottom: var(--space-7); }
+
+    /* H2 avec liseré Or — signature visuelle Homneo */
+    .section h2 {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-2xl);
+      line-height: 1.3;
+      color: var(--fg-strong);
+      border-left: 4px solid var(--gold-500);
+      padding-left: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+
+    .section p {
+      color: var(--fg-default);
+      line-height: 1.7;
+      margin-bottom: var(--space-3);
+    }
+
+    /* ─── CHECKLIST ─── */
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      font-size: var(--text-sm);
+      line-height: 1.55;
+      color: var(--fg-default);
+    }
+
+    .check-list li::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      background: var(--cyan-500);
+      border-radius: var(--radius-sm);
+      margin-top: 1px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 10px;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── ACCORDION MODULES ─── */
+    .module-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .module {
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: box-shadow var(--dur) var(--ease);
+    }
+    .module:hover { box-shadow: var(--shadow-sm); }
+
+    .module-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-4) var(--space-5);
+      background: var(--mist);
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--dur) var(--ease);
+    }
+    .module-header:hover { background: var(--navy-100); }
+
+    .module-title {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--fg-strong);
+    }
+
+    .module-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      background: var(--white);
+      border: 1px solid var(--border-default);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--fg-muted);
+      font-size: 1.2rem;
+      font-weight: 400;
+      line-height: 1;
+      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
+      flex-shrink: 0;
+    }
+    .module.open .module-toggle {
+      transform: rotate(45deg);
+      background: var(--cyan-500);
+      color: var(--white);
+      border-color: var(--cyan-500);
+    }
+
+    .module-body {
+      display: none;
+      padding: var(--space-5);
+      border-top: 1px solid var(--border-subtle);
+      background: var(--white);
+    }
+    .module.open .module-body { display: block; }
+
+    /* Note d'évaluation */
+    .eval-note {
+      margin-top: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--fg-muted);
+      padding: var(--space-3) var(--space-4);
+      background: var(--paper);
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--cyan-500);
+      line-height: 1.55;
+    }
+    .eval-note strong { color: var(--fg-default); }
+
+    /* ─── TABLEAU D'ÉVALUATION ─── */
+    .eval-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--text-sm);
+      margin-top: var(--space-3);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .eval-table thead th {
+      background: var(--navy-800);
+      color: var(--white);
+      padding: var(--space-3) var(--space-4);
+      text-align: left;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-xs);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .eval-table tbody td {
+      padding: var(--space-3) var(--space-4);
+      border-bottom: 1px solid var(--border-subtle);
+      vertical-align: top;
+      line-height: 1.55;
+      background: var(--white);
+    }
+
+    .eval-table tbody tr:last-child td {
+      border-bottom: none;
+      font-weight: 700;
+      background: var(--mist);
+      color: var(--fg-strong);
+    }
+
+    .eval-dur {
+      font-weight: 700;
+      color: var(--cyan-600);
+      white-space: nowrap;
+      font-family: var(--font-display);
+    }
+
+    .eval-note-small {
+      margin-top: var(--space-3);
+      font-size: var(--text-xs);
+      color: var(--fg-muted);
+      line-height: 1.55;
+      font-style: italic;
+    }
+
+    /* =====================================================================
+       SIDEBAR
+       ===================================================================== */
+    .sidebar {
+      position: sticky;
+      top: 80px;
+    }
+
+    .sb-label {
+      font-family: var(--font-body);
+      font-size: var(--text-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold-600);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Carte de sidebar */
+    .sb-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-bottom: var(--space-4);
+      box-shadow: var(--shadow-xs);
+      transition: box-shadow var(--dur) var(--ease);
+    }
+    .sb-card:hover { box-shadow: var(--shadow-sm); }
+
+    .sb-card-head {
+      background: var(--mist);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--space-3) var(--space-4);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-xs);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--navy-800);
+    }
+
+    .sb-card-body { padding: var(--space-4); }
+    .sb-card-body p {
+      font-size: var(--text-sm);
+      color: var(--fg-default);
+      line-height: 1.55;
+      margin-bottom: var(--space-2);
+    }
+
+    /* Prix */
+    .price-display {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--gold-500);
+      line-height: 1;
+      margin: var(--space-2) 0 var(--space-1);
+    }
+    .price-sub {
+      font-size: var(--text-xs);
+      color: var(--fg-muted);
+      margin-bottom: var(--space-4);
+    }
+
+    /* Boutons */
+    .btn {
+      display: block;
+      text-align: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-xs);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.65em var(--space-4);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      margin-bottom: var(--space-2);
+      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+      cursor: pointer;
+    }
+    .btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--navy-800);
+      color: var(--white);
+      border: 2px solid var(--navy-800);
+    }
+    .btn-primary:hover { background: var(--navy-900); border-color: var(--navy-900); box-shadow: var(--shadow-md); }
+
+    .btn-cta {
+      background: var(--gold-500);
+      color: var(--navy-800);
+      border: 2px solid var(--gold-500);
+    }
+    .btn-cta:hover { background: var(--gold-600); border-color: var(--gold-600); box-shadow: var(--shadow-gold); }
+
+    /* Détails */
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: var(--text-sm);
+    }
+    .detail-row:last-child { border-bottom: none; }
+
+    .detail-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+      width: 20px;
+      text-align: center;
+    }
+
+    .detail-content { flex: 1; }
+    .detail-label {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 2px;
+    }
+    .detail-value { color: var(--fg-strong); font-weight: 500; }
+    .detail-sub { font-size: var(--text-xs); color: var(--fg-muted); margin-top: 1px; }
+
+    /* Checklist sidebar */
+    .sb-check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .sb-check-list li {
+      display: flex;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      line-height: 1.5;
+      align-items: flex-start;
+      color: var(--fg-default);
+    }
+    .sb-check-list li::before {
+      content: '';
+      display: inline-block;
+      width: 16px; height: 16px;
+      min-width: 16px;
+      background: var(--cyan-500);
+      border-radius: var(--radius-sm);
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 9px;
+      background-repeat: no-repeat;
+      background-position: center;
+      flex-shrink: 0;
+    }
+
+    /* Contact */
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+    }
+
+    .contact-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-full);
+      background: var(--navy-800);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      flex-shrink: 0;
+      border: 2px solid var(--gold-500);
+    }
+
+    .contact-name {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: var(--text-sm);
+      color: var(--fg-strong);
+    }
+    .contact-role {
+      font-size: var(--text-xs);
+      color: var(--fg-muted);
+    }
+    .contact-link {
+      font-size: var(--text-xs);
+      color: var(--cyan-600);
+      display: block;
+      margin-top: 2px;
+    }
+    .contact-link:hover { text-decoration: underline; }
+
+    /* Note légale */
+    .legal-note {
+      font-size: var(--text-xs);
+      color: var(--fg-muted);
+      line-height: 1.6;
+      padding: var(--space-4);
+      background: var(--mist);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      margin-bottom: var(--space-4);
+    }
+    .legal-note strong { color: var(--fg-default); }
+    .legal-note a { color: var(--cyan-600); }
+
+    /* =====================================================================
+       FOOTER
+       ===================================================================== */
+    .footer {
+      background: var(--navy-800);
+      border-top: 5px solid var(--gold-500);
+      color: rgba(255,255,255,.55);
+      font-size: var(--text-xs);
+      padding: var(--space-6) var(--space-8);
+      margin-top: var(--space-6);
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-5);
+      flex-wrap: wrap;
+    }
+
+    .footer-logo img { height: 24px; opacity: .85; }
+    .footer-copy strong { color: rgba(255,255,255,.8); }
+    .footer a {
+      color: rgba(255,255,255,.55);
+      transition: color var(--dur) var(--ease);
+    }
+    .footer a:hover { color: var(--white); }
+
+    /* =====================================================================
+       RESPONSIVE
+       ===================================================================== */
+    @media (max-width: 1000px) {
+      .page-wrap {
+        grid-template-columns: 1fr;
+        padding: var(--space-5) var(--space-5);
+        gap: var(--space-6);
+      }
+      .sidebar { position: static; }
+      .hero { padding: var(--space-5) var(--space-5); }
+      .topbar { padding: 0 var(--space-5); }
+      .footer { padding: var(--space-5); }
+    }
+
+    @media (max-width: 720px) {
+      .hero h1 { font-size: var(--text-xl); }
+      .topbar-nav { display: none; }
+      .topbar-cta { display: none; }
+      .section h2 { font-size: var(--text-xl); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="#" class="topbar-logo">
+      <img src="homneo-logo-white.png" alt="Homneo Business School" />
+    </a>
+    <nav>
+      <ul class="topbar-nav">
+        <li><a href="#">Formations</a></li>
+        <li><a href="#">Alternance</a></li>
+        <li><a href="#">Campus</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="mailto:stephanie.marchal@homneo.fr" class="topbar-cta">Je candidate</a>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <span class="hero-filiere">Ressources Humaines</span>
+      <span class="sep">|</span>
+      <span>Réf. ARH-001</span>
+      <span class="sep">|</span>
+      <span>Campus de Mulhouse</span>
+    </div>
+
+    <h1>Titre Professionnel<br>Assistant Ressources Humaines</h1>
+
+    <p class="hero-sub">Dans le respect des règles juridiques, l'assistant ressources humaines assure tout ou partie des opérations liées à la gestion administrative du personnel, contribue au recrutement et au développement des compétences.</p>
+
+    <div class="hero-tags">
+      <span class="tag tag-level">Niveau 5 · Bac+2</span>
+      <span class="tag tag-rncp">RNCP 41366</span>
+      <span class="tag tag-cpf">Éligible CPF</span>
+      <span class="tag tag-vae">Accessible VAE</span>
+    </div>
+  </div>
+</div>
+<div class="hero-border"></div>
+
+<!-- ─── CONTENU PRINCIPAL ─── -->
+<div class="page-wrap">
+
+  <main>
+
+    <section class="section">
+      <h2>Objectif de la formation</h2>
+      <p>Former des professionnels capables d'assurer l'ensemble des activités de la fonction ressources humaines dans une entreprise privée, publique ou une association : gestion administrative du personnel, paie, recrutement, intégration et développement des compétences.</p>
+      <p>L'assistant RH traite des informations émanant de la direction ou de tiers et respecte les règles de confidentialité en toutes circonstances. Il mène ses missions en large autonomie, dans les limites de ses attributions, sous la responsabilité de son manager.</p>
+    </section>
+
+    <section class="section">
+      <h2>Objectifs pédagogiques</h2>
+      <ul class="check-list">
+        <li>Assurer la gestion administrative du personnel de l'entrée à la sortie du salarié</li>
+        <li>Élaborer et suivre les dossiers individuels des salariés dans le respect du cadre légal</li>
+        <li>Préparer les éléments variables de paie et contribuer au processus de paie</li>
+        <li>Participer aux opérations de recrutement (diffusion d'offres, présélection, suivi des candidatures)</li>
+        <li>Contribuer à l'intégration des nouveaux collaborateurs (onboarding)</li>
+        <li>Mettre en œuvre et suivre le plan de développement des compétences</li>
+        <li>Assurer le suivi administratif des actions de formation et les dossiers de financement (OPCO)</li>
+        <li>Appliquer les obligations légales et réglementaires en matière de droit du travail</li>
+        <li>Utiliser les outils numériques RH (SIRH, tableurs, logiciel de paie EBP)</li>
+        <li>Garantir la confidentialité et la fiabilité des informations traitées</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Plan détaillé de la formation</h2>
+      <div class="module-list">
+
+        <div class="module open">
+          <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="module-title">CCP 1 – Assurer les missions opérationnelles de la gestion des ressources humaines</span>
+            <span class="module-toggle">+</span>
+          </div>
+          <div class="module-body">
+            <ul class="check-list">
+              <li>Créer et mettre à jour les dossiers individuels du personnel</li>
+              <li>Répondre aux questions du personnel concernant ses droits et obligations</li>
+              <li>Préparer les documents internes en lien avec la fonction RH et les instances représentatives</li>
+              <li>Collecter et transmettre les éléments variables de paie dans les délais</li>
+              <li>Mettre en place et suivre les indicateurs ressources humaines (tableaux de bord)</li>
+              <li>Actualiser les fiches de poste et maintenir les outils de suivi RH</li>
+            </ul>
+            <div class="eval-note">
+              <strong>Évaluation · RNCP41366BC01 :</strong> Mise en situation professionnelle (2h) + Entretien technique (20 min) = 2h20
+            </div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="module-title">CCP 2 – Contribuer au développement des ressources humaines</span>
+            <span class="module-toggle">+</span>
+          </div>
+          <div class="module-body">
+            <ul class="check-list">
+              <li>Rédiger les profils de poste et diffuser les offres d'emploi</li>
+              <li>Trier les candidatures et planifier les entretiens</li>
+              <li>Préparer les éléments administratifs d'embauche et organiser l'onboarding</li>
+              <li>Planifier les entretiens de suivi (annuels, professionnels) et en exploiter les comptes-rendus</li>
+              <li>Recueillir les besoins de formation et contribuer à l'élaboration du plan de développement</li>
+              <li>Gérer les dossiers de financement auprès des OPCO</li>
+              <li>Assurer le suivi administratif et budgétaire des actions de formation</li>
+            </ul>
+            <div class="eval-note">
+              <strong>Évaluation · RNCP41366BC02 :</strong> Mise en situation professionnelle (2h) + Entretien technique (20 min) = 2h20
+            </div>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="module-title">Ateliers professionnels – compétences transverses</span>
+            <span class="module-toggle">+</span>
+          </div>
+          <div class="module-body">
+            <ul class="check-list">
+              <li>Technique de recherche d'emploi (TRE)</li>
+              <li>Sensibilisation au handicap en entreprise</li>
+              <li>Logiciel de paie EBP (prise en main et gestion courante)</li>
+              <li>Communication professionnelle orale et écrite</li>
+              <li>Cadre juridique de la relation de travail</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="module">
+          <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
+            <span class="module-title">Modalités pédagogiques</span>
+            <span class="module-toggle">+</span>
+          </div>
+          <div class="module-body">
+            <ul class="check-list">
+              <li>Animation interactive alternant apports théoriques et mises en pratique</li>
+              <li>Travaux de groupe, études de cas concrets issus de situations réelles</li>
+              <li>Formation en présentiel sur campus, équipé d'un progiciel de paie EBP et suite bureautique</li>
+              <li>Évaluations formatives régulières tout au long du parcours</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Compétences acquises</h2>
+      <p>À l'issue de cette formation, le candidat est capable d'exercer les activités d'assistant ressources humaines dans toute entreprise privée, publique ou association, en gérant l'administration du personnel, en contribuant au recrutement et à l'intégration, et en participant au développement des compétences des collaborateurs.</p>
+      <ul class="check-list">
+        <li>Gestion administrative autonome du personnel (contrats, dossiers, paie)</li>
+        <li>Maîtrise des process de recrutement et d'intégration</li>
+        <li>Suivi du plan de développement des compétences et relations OPCO</li>
+        <li>Utilisation des outils RH numériques (SIRH, EBP, Pack Office)</li>
+        <li>Application rigoureuse du droit du travail et respect de la confidentialité</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Modalités d'évaluation (examen final)</h2>
+      <table class="eval-table">
+        <thead>
+          <tr>
+            <th>Épreuve</th>
+            <th>Description</th>
+            <th>Durée</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Mise en situation professionnelle</strong></td>
+            <td>Étude de cas (prise en main du poste 15 min non comptées). Accès à documentation papier/numérique. Productions imprimables.</td>
+            <td class="eval-dur">3 h 30</td>
+          </tr>
+          <tr>
+            <td><strong>Entretien technique</strong></td>
+            <td>Retour sur les choix effectués (10 min) + questions sur compétences clés (20 min).</td>
+            <td class="eval-dur">30 min</td>
+          </tr>
+          <tr>
+            <td><strong>Entretien final</strong></td>
+            <td>Échange sur le dossier professionnel. Évalue la représentation du métier et les comportements professionnels.</td>
+            <td class="eval-dur">20 min</td>
+          </tr>
+          <tr>
+            <td colspan="2"><strong>Durée totale de l'épreuve</strong></td>
+            <td class="eval-dur">4 h 20</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="eval-note-small">Jury habilité par le représentant territorial du Ministère du Travail, composé de professionnels du métier (Art. R 338-6 du Code de l'Éducation).</p>
+    </section>
+
+    <section class="section">
+      <h2>Débouchés professionnels</h2>
+      <p>Tous secteurs d'activité (entreprises privées, publiques, cabinets de recrutement, associations). Codes ROME M1501 – M1502.</p>
+      <ul class="check-list">
+        <li>Assistant(e) ressources humaines</li>
+        <li>Assistant(e) formation</li>
+        <li>Assistant(e) recrutement</li>
+        <li>Assistant(e) RH et paie</li>
+        <li>Gestionnaire des emplois et des carrières</li>
+        <li>Chargé(e) des ressources humaines</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>Poursuites d'études possibles</h2>
+      <ul class="check-list">
+        <li>Licence Professionnelle Chargé(e) des Ressources Humaines (+3 CDRH)</li>
+        <li>Licence Professionnelle Métiers de la Gestion et de la Comptabilité</li>
+        <li>Licence Professionnelle Office Manager (+3 OMA)</li>
+        <li>Titre Professionnel Gestionnaire de Paie (Niveau 5)</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+
+    <div class="sb-label">Réf. ARH-001</div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Public concerné</div>
+      <div class="sb-card-body">
+        <p>Tout public (H/F) souhaitant exercer dans la fonction RH : demandeurs d'emploi en reconversion, salariés en évolution, apprentis.</p>
+        <p style="font-size:var(--text-xs);color:var(--fg-muted);">Projet professionnel à valider en amont. Site accessible aux personnes en situation de handicap.</p>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-primary" style="margin-top:var(--space-3);">Le programme</a>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-cta">Je souhaite m'inscrire</a>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Coût pédagogique</div>
+      <div class="sb-card-body">
+        <div class="price-display">Gratuit*</div>
+        <div class="price-sub">*En contrat d'apprentissage (pris en charge à 100%)</div>
+        <p style="font-size:var(--text-xs);color:var(--fg-muted);">Financement individuel : <strong>6 000 € nets/an</strong><br>Prise en charge possible selon statut — nous consulter.</p>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Détails pratiques</div>
+      <div class="sb-card-body">
+        <div class="detail-row">
+          <span class="detail-icon">🎓</span>
+          <div class="detail-content">
+            <span class="detail-label">Niveau visé</span>
+            <span class="detail-value">Niveau 5 (Bac+2)</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">⏱</span>
+          <div class="detail-content">
+            <span class="detail-label">Durée</span>
+            <span class="detail-value">512 heures · 1 an</span>
+            <div class="detail-sub">Sept. 2026 → Juin 2027</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🔄</span>
+          <div class="detail-content">
+            <span class="detail-label">Rythme</span>
+            <span class="detail-value">2 j formation / 3 j entreprise</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📍</span>
+          <div class="detail-content">
+            <span class="detail-label">Lieu de formation</span>
+            <span class="detail-value">Homneo Business School</span>
+            <div class="detail-sub">Campus du Forum – 4 rue Fredo Krumnow, 68200 Mulhouse</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🖥</span>
+          <div class="detail-content">
+            <span class="detail-label">Modalité</span>
+            <span class="detail-value">Présentiel</span>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">📅</span>
+          <div class="detail-content">
+            <span class="detail-label">Rentrée</span>
+            <span class="detail-value">Septembre 2026</span>
+            <div class="detail-sub">Inscriptions dès le 01/06/2026</div>
+          </div>
+        </div>
+        <div class="detail-row">
+          <span class="detail-icon">🔄</span>
+          <div class="detail-content">
+            <span class="detail-label">Mise à jour</span>
+            <span class="detail-value">Mars 2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Pré-requis</div>
+      <div class="sb-card-body">
+        <ul class="sb-check-list">
+          <li>Diplôme de niveau 4 (Bac) ou expérience en secteur administratif</li>
+          <li>Aisance Pack Office (Word, Excel)</li>
+          <li>Capacité relationnelle et respect de la confidentialité</li>
+          <li>Projet professionnel validé</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Modalités d'accès</div>
+      <div class="sb-card-body">
+        <ul class="sb-check-list">
+          <li>Entretien individuel de candidature</li>
+          <li>Dossier de candidature (CV + lettre de motivation)</li>
+          <li>Ateliers techniques et recherche d'alternance dès février 2026</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Validation de la certification</div>
+      <div class="sb-card-body">
+        <ul class="sb-check-list">
+          <li>Mise en situation professionnelle (3h30)</li>
+          <li>Entretien technique (30 min)</li>
+          <li>Entretien final sur dossier professionnel (20 min)</li>
+          <li>Accessible par capitalisation de CCP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sb-card">
+      <div class="sb-card-head">Votre contact</div>
+      <div class="sb-card-body">
+        <div class="contact-row">
+          <div class="contact-avatar">SM</div>
+          <div>
+            <div class="contact-name">Stéphanie MARCHAL</div>
+            <div class="contact-role">Cheffe de projets Reconversion &amp; Orientation</div>
+            <a href="tel:0660939003" class="contact-link">06 60 93 90 03</a>
+            <a href="mailto:stephanie.marchal@homneo.fr" class="contact-link">stephanie.marchal@homneo.fr</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="legal-note">
+      <strong>Informations réglementaires</strong><br>
+      Titre Professionnel délivré par le <strong>Ministère du Travail, du Plein Emploi et de l'Insertion</strong>.<br>
+      RNCP 41366 · NSF 315m · Formacode 35014<br>
+      Enregistré le 05/11/2025 · Échéance 04/11/2027.<br>
+      Accessible par CCP – capitalisation de Certificats de Compétences Professionnelles.<br><br>
+      Référent handicap : <a href="mailto:thomas.b@homneo.fr">thomas.b@homneo.fr</a><br>
+      Référent qualité : <a href="mailto:sebastien.l@homneo.fr">sebastien.l@homneo.fr</a>
+    </div>
+
+  </aside>
+
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="homneo-logo-white.png" alt="Homneo Business School" />
+    </div>
+    <div class="footer-copy">
+      <strong>Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes
+    </div>
+    <div>
+      homneo-business-school.fr · <a href="tel:0660939003">06 60 93 90 03</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -4,855 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TP Gestionnaire de Paie – Niveau 5 | Homneo Business School</title>
-
-  <!-- Homneo Design System — Webfonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* =====================================================================
-       HOMNEO DESIGN TOKENS
-       ===================================================================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      /* Palette brute */
-      --navy-50:  #F1F5F9;
-      --navy-100: #E2E8F0;
-      --navy-200: #CBD5E1;
-      --navy-300: #94A3B8;
-      --navy-400: #64748B;
-      --navy-500: #475569;
-      --navy-600: #334155;
-      --navy-700: #1E293B;
-      --navy-800: #111827;
-      --navy-900: #091222;
-
-      --gold-50:  #FDFBF7;
-      --gold-100: #FBF4E6;
-      --gold-300: #EAD198;
-      --gold-500: #D9A74A;
-      --gold-600: #C5A059;
-      --gold-700: #9C7A3C;
-
-      --cyan-500: #14B2D4;
-      --cyan-600: #0E90AE;
-      --cyan-700: #117288;
-
-      --white:  #FFFFFF;
-      --paper:  #F8FAFC;
-      --mist:   #F1F5F9;
-      --ink:    #1E293B;
-
-      /* Filière RH */
-      --fil-rh:     #00AEC7;
-      --fil-rh-fg:  #04788A;
-      --fil-rh-bg:  #E0F6F9;
-
-      /* Sémantique */
-      --success:    #10B981;
-      --success-bg: #ECFDF5;
-      --success-fg: #047857;
-
-      /* Rôles */
-      --color-primary:          var(--navy-800);
-      --color-primary-hover:    var(--navy-900);
-      --color-secondary:        var(--cyan-500);
-      --color-secondary-hover:  var(--cyan-600);
-      --color-excellence:       var(--gold-500);
-      --color-excellence-hover: var(--gold-600);
-
-      --bg-canvas:    var(--paper);
-      --bg-surface:   var(--white);
-      --bg-inverse:   var(--navy-800);
-
-      --fg-strong:    var(--navy-800);
-      --fg-default:   var(--navy-700);
-      --fg-muted:     var(--navy-400);
-      --fg-on-dark:   var(--white);
-      --fg-link:      var(--cyan-600);
-
-      --border-subtle:  var(--navy-100);
-      --border-default: var(--navy-200);
-      --ring:           var(--gold-500);
-
-      /* Typography */
-      --font-display: 'Montserrat', system-ui, sans-serif;
-      --font-body:    'Inter', system-ui, sans-serif;
-
-      --text-xs:   0.75rem;
-      --text-sm:   0.875rem;
-      --text-base: 1rem;
-      --text-lg:   1.25rem;
-      --text-xl:   1.563rem;
-      --text-2xl:  1.953rem;
-      --text-3xl:  2.441rem;
-
-      /* Spacing */
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.5rem;
-      --space-6: 2rem;
-      --space-7: 3rem;
-      --space-8: 4rem;
-
-      /* Radii */
-      --radius-sm:  4px;
-      --radius-md:  6px;
-      --radius-lg:  8px;
-      --radius-xl:  12px;
-      --radius-full: 999px;
-
-      /* Shadows */
-      --shadow-xs: 0 1px 2px rgba(15,30,54,.06);
-      --shadow-sm: 0 1px 3px rgba(15,30,54,.08), 0 1px 2px rgba(15,30,54,.04);
-      --shadow-md: 0 4px 12px rgba(15,30,54,.08), 0 2px 4px rgba(15,30,54,.04);
-      --shadow-lg: 0 12px 28px rgba(15,30,54,.12), 0 4px 8px rgba(15,30,54,.05);
-      --shadow-gold: 0 6px 18px rgba(217,167,74,.28);
-
-      --ease: cubic-bezier(.4,0,.2,1);
-      --dur: 200ms;
-    }
-
-    /* =====================================================================
-       BASE
-       ===================================================================== */
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: var(--font-body);
-      font-size: var(--text-base);
-      line-height: 1.6;
-      color: var(--fg-default);
-      background: var(--bg-canvas);
-    }
-
-    a { color: var(--fg-link); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    :where(a, button, input, [tabindex]):focus-visible {
-      outline: none;
-      box-shadow: 0 0 0 2px var(--white), 0 0 0 4px var(--gold-500);
-      border-radius: var(--radius-sm);
-    }
-
-    /* =====================================================================
-       TOPBAR / NAVBAR
-       ===================================================================== */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(17,24,39,.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      height: 60px;
-      display: flex;
-      align-items: center;
-      padding: 0 var(--space-8);
-    }
-
-    .topbar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .topbar-logo img {
-      height: 32px;
-      width: auto;
-      display: block;
-    }
-
-    .topbar-nav {
-      display: flex;
-      gap: var(--space-6);
-      list-style: none;
-    }
-
-    .topbar-nav a {
-      font-family: var(--font-body);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: rgba(255,255,255,.7);
-      text-decoration: none;
-      transition: color var(--dur) var(--ease);
-    }
-    .topbar-nav a:hover { color: var(--white); }
-
-    .topbar-cta {
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--navy-800);
-      background: var(--gold-500);
-      padding: 0.45em 1.2em;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-    }
-    .topbar-cta:hover {
-      background: var(--gold-600);
-      box-shadow: var(--shadow-gold);
-      text-decoration: none;
-    }
-
-    /* =====================================================================
-       HERO / INTRO BANNER
-       ===================================================================== */
-    .hero {
-      background: var(--navy-800);
-      color: var(--white);
-      padding: var(--space-7) var(--space-8) var(--space-6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Motif décoratif discret */
-    .hero::before,
-    .hero::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero::before {
-      width: 360px; height: 360px;
-      top: -120px; right: -80px;
-      border: 1.5px solid rgba(20,178,212,.12);
-    }
-    .hero::after {
-      width: 200px; height: 200px;
-      bottom: -60px; right: 120px;
-      border: 1.5px solid rgba(217,167,74,.1);
-    }
-
-    /* Liseré Or — signature de marque */
-    .hero-border {
-      height: 5px;
-      background: var(--gold-500);
-    }
-
-    .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: var(--space-3);
-      font-family: var(--font-body);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.55);
-      margin-bottom: var(--space-3);
-    }
-    .hero-eyebrow .sep { opacity: .35; }
-
-    .hero-filiere {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--space-2);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: #A5E5F1;
-      background: rgba(0,174,199,.18);
-      padding: 0.3em 0.75em;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(0,174,199,.35);
-    }
-    .hero-filiere::before {
-      content: '';
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--fil-rh);
-      flex-shrink: 0;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: var(--text-3xl);
-      line-height: 1.15;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin: var(--space-3) 0 var(--space-3);
-    }
-
-    .hero-sub {
-      font-size: var(--text-base);
-      color: rgba(255,255,255,.75);
-      max-width: 680px;
-      line-height: 1.65;
-    }
-
-    .hero-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-2);
-      margin-top: var(--space-4);
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 0.3em 0.8em;
-      border-radius: var(--radius-md);
-    }
-    .tag-level   { background: var(--gold-500); color: var(--navy-800); }
-    .tag-rncp    { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.25); }
-    .tag-cpf     { background: var(--success-bg); color: var(--success-fg); border: 1px solid rgba(16,185,129,.3); }
-    .tag-vae     { background: rgba(255,255,255,.07); color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.15); }
-
-    /* =====================================================================
-       PAGE LAYOUT
-       ===================================================================== */
-    .page-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: var(--space-7) var(--space-8);
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: var(--space-8);
-      align-items: start;
-    }
-
-    /* =====================================================================
-       SECTIONS PRINCIPALES
-       ===================================================================== */
-    .section { margin-bottom: var(--space-7); }
-
-    /* H2 avec liseré Or — signature visuelle Homneo */
-    .section h2 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-2xl);
-      line-height: 1.3;
-      color: var(--fg-strong);
-      border-left: 4px solid var(--gold-500);
-      padding-left: var(--space-3);
-      margin-bottom: var(--space-4);
-    }
-
-    .section p {
-      color: var(--fg-default);
-      line-height: 1.7;
-      margin-bottom: var(--space-3);
-    }
-
-    /* ─── CHECKLIST ─── */
-    .check-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      margin-top: var(--space-3);
-    }
-
-    .check-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-3);
-      font-size: var(--text-sm);
-      line-height: 1.55;
-      color: var(--fg-default);
-    }
-
-    .check-list li::before {
-      content: '';
-      display: inline-block;
-      width: 18px;
-      height: 18px;
-      min-width: 18px;
-      background: var(--cyan-500);
-      border-radius: var(--radius-sm);
-      margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 10px;
-      background-repeat: no-repeat;
-      background-position: center;
-      flex-shrink: 0;
-    }
-
-    /* ─── ACCORDION MODULES ─── */
-    .module-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-      margin-top: var(--space-3);
-    }
-
-    .module {
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: box-shadow var(--dur) var(--ease);
-    }
-    .module:hover { box-shadow: var(--shadow-sm); }
-
-    .module-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: var(--space-4) var(--space-5);
-      background: var(--mist);
-      cursor: pointer;
-      user-select: none;
-      transition: background var(--dur) var(--ease);
-    }
-    .module-header:hover { background: var(--navy-100); }
-
-    .module-title {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-sm);
-      color: var(--fg-strong);
-    }
-
-    .module-toggle {
-      width: 28px;
-      height: 28px;
-      border-radius: var(--radius-full);
-      background: var(--white);
-      border: 1px solid var(--border-default);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--fg-muted);
-      font-size: 1.2rem;
-      font-weight: 400;
-      line-height: 1;
-      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
-      flex-shrink: 0;
-    }
-    .module.open .module-toggle {
-      transform: rotate(45deg);
-      background: var(--cyan-500);
-      color: var(--white);
-      border-color: var(--cyan-500);
-    }
-
-    .module-body {
-      display: none;
-      padding: var(--space-5);
-      border-top: 1px solid var(--border-subtle);
-      background: var(--white);
-    }
-    .module.open .module-body { display: block; }
-
-    /* Note d'évaluation */
-    .eval-note {
-      margin-top: var(--space-4);
-      font-size: var(--text-xs);
-      color: var(--fg-muted);
-      padding: var(--space-3) var(--space-4);
-      background: var(--paper);
-      border-radius: var(--radius-md);
-      border-left: 3px solid var(--cyan-500);
-      line-height: 1.55;
-    }
-    .eval-note strong { color: var(--fg-default); }
-
-    /* ─── TABLEAU D'ÉVALUATION ─── */
-    .eval-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--text-sm);
-      margin-top: var(--space-3);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .eval-table thead th {
-      background: var(--navy-800);
-      color: var(--white);
-      padding: var(--space-3) var(--space-4);
-      text-align: left;
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-xs);
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .eval-table tbody td {
-      padding: var(--space-3) var(--space-4);
-      border-bottom: 1px solid var(--border-subtle);
-      vertical-align: top;
-      line-height: 1.55;
-      background: var(--white);
-    }
-
-    .eval-table tbody tr:last-child td {
-      border-bottom: none;
-      font-weight: 700;
-      background: var(--mist);
-      color: var(--fg-strong);
-    }
-
-    .eval-dur {
-      font-weight: 700;
-      color: var(--cyan-600);
-      white-space: nowrap;
-      font-family: var(--font-display);
-    }
-
-    .eval-note-small {
-      margin-top: var(--space-3);
-      font-size: var(--text-xs);
-      color: var(--fg-muted);
-      line-height: 1.55;
-      font-style: italic;
-    }
-
-    /* =====================================================================
-       SIDEBAR
-       ===================================================================== */
-    .sidebar {
-      position: sticky;
-      top: 80px;
-    }
-
-    .sb-label {
-      font-family: var(--font-body);
-      font-size: var(--text-xs);
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold-600);
-      margin-bottom: var(--space-4);
-    }
-
-    /* Carte de sidebar */
-    .sb-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-default);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin-bottom: var(--space-4);
-      box-shadow: var(--shadow-xs);
-      transition: box-shadow var(--dur) var(--ease);
-    }
-    .sb-card:hover { box-shadow: var(--shadow-sm); }
-
-    .sb-card-head {
-      background: var(--mist);
-      border-bottom: 1px solid var(--border-subtle);
-      padding: var(--space-3) var(--space-4);
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-xs);
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--navy-800);
-    }
-
-    .sb-card-body { padding: var(--space-4); }
-    .sb-card-body p {
-      font-size: var(--text-sm);
-      color: var(--fg-default);
-      line-height: 1.55;
-      margin-bottom: var(--space-2);
-    }
-
-    /* Prix */
-    .price-display {
-      font-family: var(--font-display);
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--gold-500);
-      line-height: 1;
-      margin: var(--space-2) 0 var(--space-1);
-    }
-    .price-sub {
-      font-size: var(--text-xs);
-      color: var(--fg-muted);
-      margin-bottom: var(--space-4);
-    }
-
-    /* Boutons */
-    .btn {
-      display: block;
-      text-align: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: var(--text-xs);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 0.65em var(--space-4);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      margin-bottom: var(--space-2);
-      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
-      cursor: pointer;
-    }
-    .btn:hover { text-decoration: none; transform: translateY(-1px); }
-
-    .btn-primary {
-      background: var(--navy-800);
-      color: var(--white);
-      border: 2px solid var(--navy-800);
-    }
-    .btn-primary:hover { background: var(--navy-900); border-color: var(--navy-900); box-shadow: var(--shadow-md); }
-
-    .btn-cta {
-      background: var(--gold-500);
-      color: var(--navy-800);
-      border: 2px solid var(--gold-500);
-    }
-    .btn-cta:hover { background: var(--gold-600); border-color: var(--gold-600); box-shadow: var(--shadow-gold); }
-
-    /* Détails */
-    .detail-row {
-      display: flex;
-      align-items: flex-start;
-      gap: var(--space-3);
-      padding: var(--space-3) 0;
-      border-bottom: 1px solid var(--border-subtle);
-      font-size: var(--text-sm);
-    }
-    .detail-row:last-child { border-bottom: none; }
-
-    .detail-icon {
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-      width: 20px;
-      text-align: center;
-    }
-
-    .detail-content { flex: 1; }
-    .detail-label {
-      display: block;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--fg-muted);
-      margin-bottom: 2px;
-    }
-    .detail-value { color: var(--fg-strong); font-weight: 500; }
-    .detail-sub { font-size: var(--text-xs); color: var(--fg-muted); margin-top: 1px; }
-
-    /* Checklist sidebar */
-    .sb-check-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-2);
-    }
-    .sb-check-list li {
-      display: flex;
-      gap: var(--space-2);
-      font-size: var(--text-sm);
-      line-height: 1.5;
-      align-items: flex-start;
-      color: var(--fg-default);
-    }
-    .sb-check-list li::before {
-      content: '';
-      display: inline-block;
-      width: 16px; height: 16px;
-      min-width: 16px;
-      background: var(--cyan-500);
-      border-radius: var(--radius-sm);
-      margin-top: 2px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 9px;
-      background-repeat: no-repeat;
-      background-position: center;
-      flex-shrink: 0;
-    }
-
-    /* Contact */
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: var(--space-4);
-    }
-
-    .contact-avatar {
-      width: 42px;
-      height: 42px;
-      border-radius: var(--radius-full);
-      background: var(--navy-800);
-      color: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: var(--text-sm);
-      flex-shrink: 0;
-      border: 2px solid var(--gold-500);
-    }
-
-    .contact-name {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-sm);
-      color: var(--fg-strong);
-    }
-    .contact-role {
-      font-size: var(--text-xs);
-      color: var(--fg-muted);
-    }
-    .contact-link {
-      font-size: var(--text-xs);
-      color: var(--cyan-600);
-      display: block;
-      margin-top: 2px;
-    }
-    .contact-link:hover { text-decoration: underline; }
-
-    /* Note légale */
-    .legal-note {
-      font-size: var(--text-xs);
-      color: var(--fg-muted);
-      line-height: 1.6;
-      padding: var(--space-4);
-      background: var(--mist);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      margin-bottom: var(--space-4);
-    }
-    .legal-note strong { color: var(--fg-default); }
-    .legal-note a { color: var(--cyan-600); }
-
-    /* =====================================================================
-       FOOTER
-       ===================================================================== */
-    .footer {
-      background: var(--navy-800);
-      border-top: 5px solid var(--gold-500);
-      color: rgba(255,255,255,.55);
-      font-size: var(--text-xs);
-      padding: var(--space-6) var(--space-8);
-      margin-top: var(--space-6);
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-5);
-      flex-wrap: wrap;
-    }
-
-    .footer-logo img { height: 24px; opacity: .85; }
-    .footer-copy strong { color: rgba(255,255,255,.8); }
-    .footer a {
-      color: rgba(255,255,255,.55);
-      transition: color var(--dur) var(--ease);
-    }
-    .footer a:hover { color: var(--white); }
-
-    /* =====================================================================
-       RESPONSIVE
-       ===================================================================== */
-    @media (max-width: 1000px) {
-      .page-wrap {
-        grid-template-columns: 1fr;
-        padding: var(--space-5) var(--space-5);
-        gap: var(--space-6);
-      }
-      .sidebar { position: static; }
-      .hero { padding: var(--space-5) var(--space-5); }
-      .topbar { padding: 0 var(--space-5); }
-      .footer { padding: var(--space-5); }
-    }
-
-    @media (max-width: 720px) {
-      .hero h1 { font-size: var(--text-xl); }
-      .topbar-nav { display: none; }
-      .topbar-cta { display: none; }
-      .section h2 { font-size: var(--text-xl); }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/design-system.css">
 </head>
 <body>
 
-<!-- ─── TOPBAR ─── -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="#" class="topbar-logo">
-      <img src="homneo-logo-white.png" alt="Homneo Business School" />
-    </a>
-    <nav>
-      <ul class="topbar-nav">
-        <li><a href="#">Formations</a></li>
-        <li><a href="#">Alternance</a></li>
-        <li><a href="#">Campus</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="mailto:stephanie.marchal@homneo.fr" class="topbar-cta">Je candidate</a>
-  </div>
-</header>
-
-<!-- ─── HERO ─── -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="hero-filiere">Ressources Humaines</span>
-      <span class="sep">|</span>
-      <span>Réf. GDP-001</span>
-      <span class="sep">|</span>
-      <span>Campus de Mulhouse</span>
+<!-- ─── NAVBAR ─── -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html"><img src="../homneo-logo.png" alt="Homneo Business School" class="nav__logo" /></a>
+    <div class="nav__links">
+      <a class="nav__link is-active" href="../index.html#rh">Ressources Humaines</a>
+      <a class="nav__link" href="../index.html#commerce">Commerce &amp; Management</a>
+      <a class="nav__link" href="../index.html#immobilier">Immobilier &amp; Banque</a>
+      <a class="nav__link" href="../index.html#communication">Communication</a>
+      <a class="nav__link" href="../index.html#finance">Finance &amp; Gestion</a>
     </div>
+    <div class="nav__spacer"></div>
+    <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--primary btn--sm">Je candidate</a>
+  </div>
+</nav>
 
-    <h1>Titre Professionnel<br>Gestionnaire de Paie</h1>
-
-    <p class="hero-sub">Le gestionnaire de paie collecte, contrôle et traite l'ensemble des données nécessaires à l'établissement des bulletins de salaire. Il établit les déclarations sociales obligatoires (DSN), sécurise les relations avec les organismes sociaux et accompagne l'employeur dans le respect de ses obligations légales et conventionnelles.</p>
-
-    <div class="hero-tags">
-      <span class="tag tag-level">Niveau 5 · Bac+2</span>
-      <span class="tag tag-rncp">RNCP 37948</span>
-      <span class="tag tag-cpf">Éligible CPF</span>
-      <span class="tag tag-vae">Accessible VAE</span>
+<!-- ─── DETAIL HERO ─── -->
+<section class="detail__hero">
+  <div class="hero__deco" style="width:300px;height:300px;right:-80px;top:-100px;border:1px solid rgba(255,255,255,.07)"></div>
+  <div class="hero__deco" style="width:160px;height:160px;right:80px;bottom:-90px;border:1px solid rgba(0,174,199,.3)"></div>
+  <div class="detail__inner" style="padding-top:28px;">
+    <a class="detail__back" href="../index.html#rh">← Retour aux formations</a>
+  </div>
+  <div class="detail__inner" style="padding-top:22px;padding-bottom:48px;" data-filiere="rh">
+    <div class="detail__meta">
+      <span class="fil-chip">Ressources Humaines</span>
+      <span class="lvl" style="color:var(--gold-500);">Niveau 5 · Bac+2 · Campus de Mulhouse</span>
+    </div>
+    <h1 class="h1" style="color:#fff;">Titre Professionnel<br>Gestionnaire de Paie</h1>
+    <p class="lead" style="color:var(--navy-200);margin-top:14px;max-width:680px;">
+      Le gestionnaire de paie collecte, contrôle et traite l'ensemble des données nécessaires à l'établissement
+      des bulletins de salaire. Il établit les déclarations sociales obligatoires (DSN), sécurise les relations
+      avec les organismes sociaux et accompagne l'employeur dans le respect de ses obligations légales et
+      conventionnelles.
+    </p>
+    <div class="filters" style="margin-top:20px;">
+      <span class="badge badge--navy" style="background:rgba(255,255,255,.12);color:#fff;">RNCP 37948</span>
+      <span class="badge" style="background:var(--success-bg);color:var(--success-fg);">Éligible CPF</span>
+      <span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.75);">Accessible VAE</span>
     </div>
   </div>
-</div>
-<div class="hero-border"></div>
+</section>
 
-<!-- ─── CONTENU PRINCIPAL ─── -->
-<div class="page-wrap">
+<!-- ─── CONTENU ─── -->
+<div class="detail__cols">
 
   <main>
 
-    <section class="section">
-      <h2>Objectif de la formation</h2>
+    <div class="detail-block">
+      <h2 class="h2">Objectif de la formation</h2>
       <p>Former des professionnels capables de gérer l'ensemble du processus de paie, du recueil des données au contrôle des bulletins, en assurant la conformité légale et conventionnelle des paies et des pratiques sociales.</p>
       <p>Le gestionnaire de paie suit et actualise les dossiers du personnel (entrées, absences, arrêts, fins de contrat), établit les déclarations sociales obligatoires et sécurise les échanges avec les organismes sociaux. Il utilise un logiciel de paie professionnel pour fiabiliser les traitements et produire des reportings RH, et contribue au fonctionnement du service RH en apportant une expertise technique en paie et en droit social.</p>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Objectifs pédagogiques</h2>
+    <div class="detail-block">
+      <h2 class="h2">Objectifs pédagogiques</h2>
       <ul class="check-list">
         <li>Gérer l'ensemble du processus de paie, du recueil des données au contrôle des bulletins</li>
         <li>Assurer la conformité légale et conventionnelle des paies et des pratiques sociales</li>
@@ -862,10 +73,10 @@
         <li>Utiliser un logiciel de paie professionnel pour fiabiliser les traitements et produire des reportings RH</li>
         <li>Contribuer au fonctionnement du service RH en apportant une expertise technique en paie et en droit social</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Plan détaillé de la formation</h2>
+    <div class="detail-block">
+      <h2 class="h2">Plan détaillé de la formation</h2>
       <div class="module-list">
 
         <div class="module open">
@@ -881,9 +92,7 @@
               <li>Intégrer les avantages et primes</li>
               <li>Utiliser un logiciel de paie (SIRH) et veiller à la conformité réglementaire</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · RNCP37948BC01 :</strong> Étude de cas pratique portant sur la préparation et l'établissement de bulletins de salaire complets à partir de dossiers de salariés.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP37948BC01 :</strong> Étude de cas pratique portant sur la préparation et l'établissement de bulletins de salaire complets à partir de dossiers de salariés.</div>
           </div>
         </div>
 
@@ -900,9 +109,7 @@
               <li>Réaliser le suivi comptable de la paie</li>
               <li>Régulariser les anomalies</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · RNCP37948BC02 :</strong> Épreuve de contrôle pratique axée sur la production, la vérification et la validation d'une DSN et des déclarations associées.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP37948BC02 :</strong> Épreuve de contrôle pratique axée sur la production, la vérification et la validation d'une DSN et des déclarations associées.</div>
           </div>
         </div>
 
@@ -918,9 +125,7 @@
               <li>Éditer le solde de tout compte</li>
               <li>Établir l'attestation France Travail et le certificat de travail</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · RNCP37948BC03 :</strong> Mise en situation professionnelle ou étude de cas portant sur le traitement administratif et financier d'un départ de salarié.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP37948BC03 :</strong> Mise en situation professionnelle ou étude de cas portant sur le traitement administratif et financier d'un départ de salarié.</div>
           </div>
         </div>
 
@@ -959,10 +164,10 @@
         </div>
 
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Compétences acquises</h2>
+    <div class="detail-block">
+      <h2 class="h2">Compétences acquises</h2>
       <p>À l'issue de cette formation, le candidat est capable de gérer l'ensemble du processus de paie d'une entreprise, en garantissant la conformité légale et conventionnelle des traitements, en assurant les déclarations sociales obligatoires et en sécurisant les relations avec les organismes sociaux.</p>
       <ul class="check-list">
         <li>Établissement et contrôle des bulletins de salaire, du brut au net</li>
@@ -971,18 +176,12 @@
         <li>Maîtrise d'un logiciel de paie professionnel (progiciel EBP) et des outils bureautiques</li>
         <li>Application rigoureuse du droit social et respect de la confidentialité</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Modalités d'évaluation (examen final)</h2>
+    <div class="detail-block">
+      <h2 class="h2">Modalités d'évaluation (examen final)</h2>
       <table class="eval-table">
-        <thead>
-          <tr>
-            <th>Épreuve</th>
-            <th>Description</th>
-            <th>Durée</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Épreuve</th><th>Description</th><th>Durée</th></tr></thead>
         <tbody>
           <tr>
             <td><strong>Mise en situation professionnelle</strong></td>
@@ -999,17 +198,14 @@
             <td>Échange sur le dossier professionnel. Évalue la représentation du métier et les comportements professionnels.</td>
             <td class="eval-dur">20 min</td>
           </tr>
-          <tr>
-            <td colspan="2"><strong>Durée totale de l'épreuve</strong></td>
-            <td class="eval-dur">5 h 05</td>
-          </tr>
+          <tr><td colspan="2"><strong>Durée totale de l'épreuve</strong></td><td class="eval-dur">5 h 05</td></tr>
         </tbody>
       </table>
       <p class="eval-note-small">Pendant la formation : mises en situation professionnelle reconstituées à partir de situations réelles, évaluations tout au long du parcours. Jury habilité par le représentant territorial du Ministère du Travail, composé de professionnels du métier.</p>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Débouchés professionnels</h2>
+    <div class="detail-block">
+      <h2 class="h2">Débouchés professionnels</h2>
       <p>Tous secteurs d'activité : entreprises, cabinets d'expertise comptable, cabinets sociaux, organismes de gestion de paie externalisée.</p>
       <ul class="check-list">
         <li>Gestionnaire de paie</li>
@@ -1019,31 +215,29 @@
         <li>Chargé(e) de paie et administration du personnel</li>
         <li>Assistant(e) RH et paie</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Poursuites d'études possibles</h2>
+    <div class="detail-block">
+      <h2 class="h2">Poursuites d'études possibles</h2>
       <ul class="check-list">
         <li>Licence Professionnelle Métiers de la Gestion et de la Comptabilité</li>
         <li>Licence Professionnelle Chargé(e) des Ressources Humaines (+3 CDRH)</li>
         <li>Titre Professionnel Assistant(e) RH (Niveau 5)</li>
       </ul>
-    </section>
+    </div>
 
   </main>
 
-  <!-- ── SIDEBAR ── -->
-  <aside class="sidebar">
-
-    <div class="sb-label">Réf. GDP-001</div>
+  <!-- ── ASIDE ── -->
+  <aside class="detail__aside">
 
     <div class="sb-card">
       <div class="sb-card-head">Public concerné</div>
       <div class="sb-card-body">
         <p>Tous publics (H/F) ayant validé leur projet professionnel en amont (expérience, stage, bilan de compétences avec enquête terrain).</p>
         <p style="font-size:var(--text-xs);color:var(--fg-muted);">Site accessible aux personnes à mobilité réduite.</p>
-        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-primary" style="margin-top:var(--space-3);">Le programme</a>
-        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-cta">Je souhaite m'inscrire</a>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--primary btn--block" style="margin-top:var(--space-3);">Le programme</a>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--gold btn--block" style="margin-top:8px;">Je souhaite m'inscrire</a>
       </div>
     </div>
 
@@ -1059,60 +253,13 @@
     <div class="sb-card">
       <div class="sb-card-head">Détails pratiques</div>
       <div class="sb-card-body">
-        <div class="detail-row">
-          <span class="detail-icon">🎓</span>
-          <div class="detail-content">
-            <span class="detail-label">Niveau visé</span>
-            <span class="detail-value">Niveau 5 (Bac+2)</span>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">⏱</span>
-          <div class="detail-content">
-            <span class="detail-label">Durée</span>
-            <span class="detail-value">861 heures</span>
-            <div class="detail-sub">651 h de formation + 210 h de stage (2 x 3 semaines)</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">🔄</span>
-          <div class="detail-content">
-            <span class="detail-label">Organisation</span>
-            <span class="detail-value">CCP1 (266 h) puis CCP2 (238 h)</span>
-            <div class="detail-sub">CCP1 : 15.07 → 18.09.2026 · CCP2 : 12.10 → 18.12.2026</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">📍</span>
-          <div class="detail-content">
-            <span class="detail-label">Lieu de formation</span>
-            <span class="detail-value">Homneo Business School</span>
-            <div class="detail-sub">Campus du Forum – 4 rue Fredo Krumnow, 68200 Mulhouse</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">🖥</span>
-          <div class="detail-content">
-            <span class="detail-label">Modalité</span>
-            <span class="detail-value">Présentiel + distanciel</span>
-            <div class="detail-sub">Plateforme E-learning</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">📅</span>
-          <div class="detail-content">
-            <span class="detail-label">Dates de la formation</span>
-            <span class="detail-value">Du 29.06.2026 au 15.01.2027</span>
-            <div class="detail-sub">Certification : 14 et 15.01.2027</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">🔄</span>
-          <div class="detail-content">
-            <span class="detail-label">Mise à jour</span>
-            <span class="detail-value">Mars 2026</span>
-          </div>
-        </div>
+        <div class="detail-row"><span class="detail-icon">🎓</span><div class="detail-content"><span class="detail-label">Niveau visé</span><span class="detail-value">Niveau 5 (Bac+2)</span></div></div>
+        <div class="detail-row"><span class="detail-icon">⏱</span><div class="detail-content"><span class="detail-label">Durée</span><span class="detail-value">861 heures</span><div class="detail-sub">651 h de formation + 210 h de stage (2 x 3 semaines)</div></div></div>
+        <div class="detail-row"><span class="detail-icon">🔄</span><div class="detail-content"><span class="detail-label">Organisation</span><span class="detail-value">CCP1 (266 h) puis CCP2 (238 h)</span><div class="detail-sub">CCP1 : 15.07 → 18.09.2026 · CCP2 : 12.10 → 18.12.2026</div></div></div>
+        <div class="detail-row"><span class="detail-icon">📍</span><div class="detail-content"><span class="detail-label">Lieu de formation</span><span class="detail-value">Homneo Business School</span><div class="detail-sub">Campus du Forum – 4 rue Fredo Krumnow, 68200 Mulhouse</div></div></div>
+        <div class="detail-row"><span class="detail-icon">🖥</span><div class="detail-content"><span class="detail-label">Modalité</span><span class="detail-value">Présentiel + distanciel</span><div class="detail-sub">Plateforme E-learning</div></div></div>
+        <div class="detail-row"><span class="detail-icon">📅</span><div class="detail-content"><span class="detail-label">Dates de la formation</span><span class="detail-value">Du 29.06.2026 au 15.01.2027</span><div class="detail-sub">Certification : 14 et 15.01.2027</div></div></div>
+        <div class="detail-row"><span class="detail-icon">🔄</span><div class="detail-content"><span class="detail-label">Mise à jour</span><span class="detail-value">Mars 2026</span></div></div>
       </div>
     </div>
 
@@ -1183,15 +330,33 @@
 
 <!-- ─── FOOTER ─── -->
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <img src="homneo-logo-white.png" alt="Homneo Business School" />
-    </div>
-    <div class="footer-copy">
-      <strong>Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes
+  <div class="footer__inner">
+    <div>
+      <img src="../homneo-logo-onnavy.png" alt="Homneo Business School" class="footer__logo" />
+      <p style="font-size:14px;line-height:1.7;color:var(--navy-300);max-width:280px;margin:0 0 18px;">
+        L'école de commerce qui accompagne chaque alternant de l'admission jusqu'à l'emploi.
+      </p>
     </div>
     <div>
-      homneo-business-school.fr · <a href="tel:0660939003">06 60 93 90 03</a>
+      <h4>Formations</h4>
+      <a href="../index.html#rh">Ressources Humaines</a>
+      <a href="../index.html#commerce">Commerce &amp; Management</a>
+      <a href="../index.html#immobilier">Immobilier &amp; Banque</a>
+    </div>
+    <div>
+      <h4>L'école</h4>
+      <a href="https://imt-formation.fr/" target="_blank" rel="noopener">Catalogue complet</a>
+      <a href="mailto:stephanie.marchal@homneo.fr">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:stephanie.marchal@homneo.fr">stephanie.marchal@homneo.fr</a>
+      <a href="tel:0660939003">06 60 93 90 03</a>
+    </div>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar-inner">
+      <span><strong style="color:#fff;">Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes</span>
     </div>
   </div>
 </footer>

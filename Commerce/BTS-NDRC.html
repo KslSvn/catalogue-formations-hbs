@@ -4,536 +4,124 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BTS NDRC – Négociation &amp; Digitalisation de la Relation Client – Niveau 5 | Homneo Business School</title>
-
-  <!-- Homneo Design System — Webfonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    /* =====================================================================
-       HOMNEO DESIGN TOKENS
-       ===================================================================== */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy-50:  #F1F5F9;
-      --navy-100: #E2E8F0;
-      --navy-200: #CBD5E1;
-      --navy-300: #94A3B8;
-      --navy-400: #64748B;
-      --navy-500: #475569;
-      --navy-600: #334155;
-      --navy-700: #1E293B;
-      --navy-800: #111827;
-      --navy-900: #091222;
-
-      --gold-50:  #FDFBF7;
-      --gold-100: #FBF4E6;
-      --gold-300: #EAD198;
-      --gold-500: #D9A74A;
-      --gold-600: #C5A059;
-      --gold-700: #9C7A3C;
-
-      --cyan-500: #14B2D4;
-      --cyan-600: #0E90AE;
-      --cyan-700: #117288;
-
-      --white:  #FFFFFF;
-      --paper:  #F8FAFC;
-      --mist:   #F1F5F9;
-      --ink:    #1E293B;
-
-      /* Filière Commerce, Marketing & Management */
-      --fil-com:    #526E7D;
-      --fil-com-fg: #34495A;
-      --fil-com-bg: #E9EDEF;
-
-      --success:    #10B981;
-      --success-bg: #ECFDF5;
-      --success-fg: #047857;
-
-      --color-primary:          var(--navy-800);
-      --color-primary-hover:    var(--navy-900);
-      --color-secondary:        var(--cyan-500);
-      --color-secondary-hover:  var(--cyan-600);
-      --color-excellence:       var(--gold-500);
-      --color-excellence-hover: var(--gold-600);
-
-      --bg-canvas:    var(--paper);
-      --bg-surface:   var(--white);
-      --bg-inverse:   var(--navy-800);
-
-      --fg-strong:    var(--navy-800);
-      --fg-default:   var(--navy-700);
-      --fg-muted:     var(--navy-400);
-      --fg-on-dark:   var(--white);
-      --fg-link:      var(--cyan-600);
-
-      --border-subtle:  var(--navy-100);
-      --border-default: var(--navy-200);
-      --ring:           var(--gold-500);
-
-      --font-display: 'Montserrat', system-ui, sans-serif;
-      --font-body:    'Inter', system-ui, sans-serif;
-
-      --text-xs:   0.75rem;
-      --text-sm:   0.875rem;
-      --text-base: 1rem;
-      --text-lg:   1.25rem;
-      --text-xl:   1.563rem;
-      --text-2xl:  1.953rem;
-      --text-3xl:  2.441rem;
-
-      --space-1: 0.25rem;
-      --space-2: 0.5rem;
-      --space-3: 0.75rem;
-      --space-4: 1rem;
-      --space-5: 1.5rem;
-      --space-6: 2rem;
-      --space-7: 3rem;
-      --space-8: 4rem;
-
-      --radius-sm:  4px;
-      --radius-md:  6px;
-      --radius-lg:  8px;
-      --radius-xl:  12px;
-      --radius-full: 999px;
-
-      --shadow-xs: 0 1px 2px rgba(15,30,54,.06);
-      --shadow-sm: 0 1px 3px rgba(15,30,54,.08), 0 1px 2px rgba(15,30,54,.04);
-      --shadow-md: 0 4px 12px rgba(15,30,54,.08), 0 2px 4px rgba(15,30,54,.04);
-      --shadow-lg: 0 12px 28px rgba(15,30,54,.12), 0 4px 8px rgba(15,30,54,.05);
-      --shadow-gold: 0 6px 18px rgba(217,167,74,.28);
-
-      --ease: cubic-bezier(.4,0,.2,1);
-      --dur: 200ms;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      color: var(--fg-default);
-      background: var(--bg-canvas);
-      line-height: 1.5;
-    }
-    a { color: var(--fg-link); text-decoration: none; }
-
-    /* =====================================================================
-       TOPBAR / NAVBAR
-       ===================================================================== */
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(17,24,39,.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      height: 60px;
-      display: flex;
-      align-items: center;
-      padding: 0 var(--space-8);
-    }
-    .topbar-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .topbar-logo img { height: 32px; width: auto; display: block; }
-    .topbar-nav { display: flex; gap: var(--space-6); list-style: none; }
-    .topbar-nav a {
-      font-family: var(--font-body);
-      font-size: var(--text-sm);
-      font-weight: 500;
-      color: rgba(255,255,255,.7);
-      text-decoration: none;
-      transition: color var(--dur) var(--ease);
-    }
-    .topbar-nav a:hover { color: var(--white); }
-    .topbar-cta {
-      font-family: var(--font-display);
-      font-size: var(--text-xs);
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--navy-800);
-      background: var(--gold-500);
-      padding: 0.45em 1.2em;
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
-    }
-    .topbar-cta:hover { background: var(--gold-600); box-shadow: var(--shadow-gold); text-decoration: none; }
-
-    /* =====================================================================
-       HERO / INTRO BANNER
-       ===================================================================== */
-    .hero {
-      background: var(--navy-800);
-      color: var(--white);
-      padding: var(--space-7) var(--space-8) var(--space-6);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before, .hero::after {
-      content: '';
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero::before { width: 360px; height: 360px; top: -120px; right: -80px; border: 1.5px solid rgba(82,110,125,.18); }
-    .hero::after  { width: 200px; height: 200px; bottom: -60px; right: 120px; border: 1.5px solid rgba(217,167,74,.1); }
-
-    .hero-border { height: 5px; background: var(--gold-500); }
-
-    .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-
-    .hero-eyebrow {
-      display: flex; align-items: center; gap: var(--space-3);
-      font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em;
-      text-transform: uppercase; color: rgba(255,255,255,.55);
-      margin-bottom: var(--space-3);
-    }
-    .hero-eyebrow .sep { opacity: .35; }
-
-    .hero-filiere {
-      display: inline-flex; align-items: center; gap: var(--space-2);
-      font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-      color: #C3D0D8;
-      background: rgba(82,110,125,.22);
-      padding: 0.3em 0.75em;
-      border-radius: var(--radius-full);
-      border: 1px solid rgba(82,110,125,.4);
-    }
-    .hero-filiere::before {
-      content: ''; width: 6px; height: 6px; border-radius: 50%;
-      background: var(--fil-com); flex-shrink: 0;
-    }
-
-    .hero h1 {
-      font-family: var(--font-display);
-      font-weight: 700;
-      font-size: var(--text-3xl);
-      line-height: 1.15;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin: var(--space-3) 0 var(--space-3);
-    }
-    .hero-sub { font-size: var(--text-base); color: rgba(255,255,255,.75); max-width: 680px; line-height: 1.65; }
-
-    .hero-tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-4); }
-    .tag {
-      display: inline-flex; align-items: center;
-      font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;
-      padding: 0.3em 0.8em; border-radius: var(--radius-md);
-    }
-    .tag-level   { background: var(--gold-500); color: var(--navy-800); }
-    .tag-rncp    { background: rgba(255,255,255,.12); color: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.25); }
-    .tag-cpf     { background: var(--success-bg); color: var(--success-fg); border: 1px solid rgba(16,185,129,.3); }
-    .tag-vae     { background: rgba(255,255,255,.07); color: rgba(255,255,255,.75); border: 1px solid rgba(255,255,255,.15); }
-
-    /* =====================================================================
-       PAGE LAYOUT
-       ===================================================================== */
-    .page-wrap {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: var(--space-7) var(--space-8);
-      display: grid;
-      grid-template-columns: 1fr 320px;
-      gap: var(--space-8);
-      align-items: start;
-    }
-
-    /* =====================================================================
-       SECTIONS PRINCIPALES
-       ===================================================================== */
-    .section { margin-bottom: var(--space-7); }
-
-    .section h2 {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: var(--text-2xl);
-      line-height: 1.3;
-      color: var(--fg-strong);
-      border-left: 4px solid var(--gold-500);
-      padding-left: var(--space-3);
-      margin-bottom: var(--space-4);
-    }
-
-    .section p { color: var(--fg-default); line-height: 1.7; margin-bottom: var(--space-3); }
-
-    /* ─── CHECKLIST ─── */
-    .check-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-3); }
-    .check-list li { display: flex; align-items: flex-start; gap: var(--space-3); font-size: var(--text-sm); line-height: 1.55; color: var(--fg-default); }
-    .check-list li::before {
-      content: ''; display: inline-block; width: 18px; height: 18px; min-width: 18px;
-      background: var(--cyan-500); border-radius: var(--radius-sm); margin-top: 1px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 10px; background-repeat: no-repeat; background-position: center; flex-shrink: 0;
-    }
-
-    /* ─── ACCORDION MODULES ─── */
-    .module-list { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-3); }
-    .module { border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; transition: box-shadow var(--dur) var(--ease); }
-    .module:hover { box-shadow: var(--shadow-sm); }
-    .module-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: var(--space-4) var(--space-5); background: var(--mist); cursor: pointer; user-select: none;
-      transition: background var(--dur) var(--ease);
-    }
-    .module-header:hover { background: var(--navy-100); }
-    .module-title { font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--fg-strong); }
-    .module-toggle {
-      width: 28px; height: 28px; border-radius: var(--radius-full); background: var(--white);
-      border: 1px solid var(--border-default); display: flex; align-items: center; justify-content: center;
-      color: var(--fg-muted); font-size: 1.2rem; font-weight: 400; line-height: 1;
-      transition: transform var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
-      flex-shrink: 0;
-    }
-    .module.open .module-toggle { transform: rotate(45deg); background: var(--cyan-500); color: var(--white); border-color: var(--cyan-500); }
-    .module-body { display: none; padding: var(--space-5); border-top: 1px solid var(--border-subtle); background: var(--white); }
-    .module.open .module-body { display: block; }
-
-    .eval-note {
-      margin-top: var(--space-4); font-size: var(--text-xs); color: var(--fg-muted);
-      padding: var(--space-3) var(--space-4); background: var(--paper); border-radius: var(--radius-md);
-      border-left: 3px solid var(--cyan-500); line-height: 1.55;
-    }
-    .eval-note strong { color: var(--fg-default); }
-
-    /* ─── TABLEAU D'ÉVALUATION ─── */
-    .eval-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); margin-top: var(--space-3); border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm); }
-    .eval-table thead th {
-      background: var(--navy-800); color: var(--white); padding: var(--space-3) var(--space-4); text-align: left;
-      font-family: var(--font-display); font-weight: 600; font-size: var(--text-xs); letter-spacing: 0.05em; text-transform: uppercase;
-    }
-    .eval-table tbody td { padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--border-subtle); vertical-align: top; line-height: 1.55; background: var(--white); }
-    .eval-table tbody tr:last-child td { border-bottom: none; font-weight: 700; background: var(--mist); color: var(--fg-strong); }
-    .eval-dur { font-weight: 700; color: var(--cyan-600); white-space: nowrap; font-family: var(--font-display); }
-    .eval-note-small { margin-top: var(--space-3); font-size: var(--text-xs); color: var(--fg-muted); line-height: 1.55; font-style: italic; }
-
-    /* =====================================================================
-       SIDEBAR
-       ===================================================================== */
-    .sidebar { position: sticky; top: 80px; }
-    .sb-label { font-family: var(--font-body); font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-600); margin-bottom: var(--space-4); }
-
-    .sb-card { background: var(--bg-surface); border: 1px solid var(--border-default); border-radius: var(--radius-lg); overflow: hidden; margin-bottom: var(--space-4); box-shadow: var(--shadow-xs); transition: box-shadow var(--dur) var(--ease); }
-    .sb-card:hover { box-shadow: var(--shadow-sm); }
-    .sb-card-head { background: var(--mist); border-bottom: 1px solid var(--border-subtle); padding: var(--space-3) var(--space-4); font-family: var(--font-display); font-weight: 600; font-size: var(--text-xs); letter-spacing: 0.07em; text-transform: uppercase; color: var(--navy-800); }
-    .sb-card-body { padding: var(--space-4); }
-    .sb-card-body p { font-size: var(--text-sm); color: var(--fg-default); line-height: 1.55; margin-bottom: var(--space-2); }
-
-    .price-display { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--gold-500); line-height: 1; margin: var(--space-2) 0 var(--space-1); }
-    .price-sub { font-size: var(--text-xs); color: var(--fg-muted); margin-bottom: var(--space-4); }
-
-    .btn {
-      display: block; text-align: center; font-family: var(--font-display); font-weight: 700; font-size: var(--text-xs);
-      letter-spacing: 0.06em; text-transform: uppercase; padding: 0.65em var(--space-4); border-radius: var(--radius-md);
-      text-decoration: none; margin-bottom: var(--space-2);
-      transition: background var(--dur) var(--ease), box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
-      cursor: pointer;
-    }
-    .btn:hover { text-decoration: none; transform: translateY(-1px); }
-    .btn-primary { background: var(--navy-800); color: var(--white); border: 2px solid var(--navy-800); }
-    .btn-primary:hover { background: var(--navy-900); border-color: var(--navy-900); box-shadow: var(--shadow-md); }
-    .btn-cta { background: var(--gold-500); color: var(--navy-800); border: 2px solid var(--gold-500); }
-    .btn-cta:hover { background: var(--gold-600); border-color: var(--gold-600); box-shadow: var(--shadow-gold); }
-
-    .detail-row { display: flex; align-items: flex-start; gap: var(--space-3); padding: var(--space-3) 0; border-bottom: 1px solid var(--border-subtle); font-size: var(--text-sm); }
-    .detail-row:last-child { border-bottom: none; }
-    .detail-icon { font-size: 1rem; flex-shrink: 0; margin-top: 1px; width: 20px; text-align: center; }
-    .detail-content { flex: 1; }
-    .detail-label { display: block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 2px; }
-    .detail-value { color: var(--fg-strong); font-weight: 500; }
-    .detail-sub { font-size: var(--text-xs); color: var(--fg-muted); margin-top: 1px; }
-
-    .sb-check-list { list-style: none; display: flex; flex-direction: column; gap: var(--space-2); }
-    .sb-check-list li { display: flex; gap: var(--space-2); font-size: var(--text-sm); line-height: 1.5; align-items: flex-start; color: var(--fg-default); }
-    .sb-check-list li::before {
-      content: ''; display: inline-block; width: 16px; height: 16px; min-width: 16px;
-      background: var(--cyan-500); border-radius: var(--radius-sm); margin-top: 2px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath d='M1 5l3.5 3.5L11 1' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-size: 9px; background-repeat: no-repeat; background-position: center; flex-shrink: 0;
-    }
-
-    .contact-row { display: flex; align-items: center; gap: var(--space-4); }
-    .contact-avatar { width: 42px; height: 42px; border-radius: var(--radius-full); background: var(--navy-800); color: var(--white); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-weight: 700; font-size: var(--text-sm); flex-shrink: 0; border: 2px solid var(--gold-500); }
-    .contact-name { font-family: var(--font-display); font-weight: 600; font-size: var(--text-sm); color: var(--fg-strong); }
-    .contact-role { font-size: var(--text-xs); color: var(--fg-muted); }
-    .contact-link { font-size: var(--text-xs); color: var(--cyan-600); display: block; margin-top: 2px; }
-    .contact-link:hover { text-decoration: underline; }
-
-    .legal-note { font-size: var(--text-xs); color: var(--fg-muted); line-height: 1.6; padding: var(--space-4); background: var(--mist); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); margin-bottom: var(--space-4); }
-    .legal-note strong { color: var(--fg-default); }
-    .legal-note a { color: var(--cyan-600); }
-
-    /* =====================================================================
-       FOOTER
-       ===================================================================== */
-    .footer { background: var(--navy-800); border-top: 5px solid var(--gold-500); color: rgba(255,255,255,.55); font-size: var(--text-xs); padding: var(--space-6) var(--space-8); margin-top: var(--space-6); }
-    .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: var(--space-5); flex-wrap: wrap; }
-    .footer-logo img { height: 24px; opacity: .85; }
-    .footer-copy strong { color: rgba(255,255,255,.8); }
-    .footer a { color: rgba(255,255,255,.55); transition: color var(--dur) var(--ease); }
-    .footer a:hover { color: var(--white); }
-
-    /* =====================================================================
-       RESPONSIVE
-       ===================================================================== */
-    @media (max-width: 1000px) {
-      .page-wrap { grid-template-columns: 1fr; padding: var(--space-5) var(--space-5); gap: var(--space-6); }
-      .sidebar { position: static; }
-      .hero { padding: var(--space-5) var(--space-5); }
-      .topbar { padding: 0 var(--space-5); }
-      .footer { padding: var(--space-5); }
-    }
-    @media (max-width: 720px) {
-      .hero h1 { font-size: var(--text-xl); }
-      .topbar-nav { display: none; }
-      .topbar-cta { display: none; }
-      .section h2 { font-size: var(--text-xl); }
-    }
-  </style>
+  <link rel="stylesheet" href="../assets/design-system.css">
 </head>
 <body>
 
-<!-- ─── TOPBAR ─── -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="../index.html" class="topbar-logo">
-      <img src="../homneo-logo-white.png" alt="Homneo Business School" />
-    </a>
-    <nav>
-      <ul class="topbar-nav">
-        <li><a href="../index.html#rh">Ressources Humaines</a></li>
-        <li><a href="../index.html#commerce">Commerce &amp; Management</a></li>
-        <li><a href="../index.html#immobilier">Immobilier &amp; Banque</a></li>
-        <li><a href="../index.html#communication">Communication</a></li>
-        <li><a href="../index.html#finance">Finance &amp; Gestion</a></li>
-      </ul>
-    </nav>
-    <a href="mailto:stephanie.marchal@homneo.fr" class="topbar-cta">Je candidate</a>
-  </div>
-</header>
-
-<!-- ─── HERO ─── -->
-<div class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <span class="hero-filiere">Commerce, Marketing &amp; Management</span>
-      <span class="sep">|</span>
-      <span>Réf. NDRC-001</span>
-      <span class="sep">|</span>
-      <span>Multi-campus</span>
+<!-- ─── NAVBAR ─── -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="../index.html"><img src="../homneo-logo.png" alt="Homneo Business School" class="nav__logo" /></a>
+    <div class="nav__links">
+      <a class="nav__link" href="../index.html#rh">Ressources Humaines</a>
+      <a class="nav__link is-active" href="../index.html#commerce">Commerce &amp; Management</a>
+      <a class="nav__link" href="../index.html#immobilier">Immobilier &amp; Banque</a>
+      <a class="nav__link" href="../index.html#communication">Communication</a>
+      <a class="nav__link" href="../index.html#finance">Finance &amp; Gestion</a>
     </div>
+    <div class="nav__spacer"></div>
+    <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--primary btn--sm">Je candidate</a>
+  </div>
+</nav>
 
-    <h1>BTS Négociation &amp; Digitalisation<br>de la Relation Client</h1>
-
-    <p class="hero-sub">Le titulaire du BTS NDRC exerce son activité dans toute forme d'organisation — artisanale, commerciale ou industrielle, associative, publique — proposant des biens ou des prestations de services, dès lors qu'elle met en œuvre une démarche commerciale. Il assure la prise en charge internalisée ou externalisée de tout type de relation client.</p>
-
-    <div class="hero-tags">
-      <span class="tag tag-level">Niveau 5 · Bac+2</span>
-      <span class="tag tag-rncp">RNCP 38368</span>
-      <span class="tag tag-cpf">Code CPF 239091</span>
-      <span class="tag tag-vae">Accessible VAE</span>
+<!-- ─── DETAIL HERO ─── -->
+<section class="detail__hero">
+  <div class="hero__deco" style="width:300px;height:300px;right:-80px;top:-100px;border:1px solid rgba(255,255,255,.07)"></div>
+  <div class="hero__deco" style="width:160px;height:160px;right:80px;bottom:-90px;border:1px solid rgba(82,110,125,.3)"></div>
+  <div class="detail__inner" style="padding-top:28px;">
+    <a class="detail__back" href="../index.html#commerce">← Retour aux formations</a>
+  </div>
+  <div class="detail__inner" style="padding-top:22px;padding-bottom:48px;" data-filiere="commercial">
+    <div class="detail__meta">
+      <span class="fil-chip">Commerce, Marketing &amp; Management</span>
+      <span class="lvl" style="color:var(--gold-500);">Niveau 5 · Bac+2 · 24 mois</span>
+    </div>
+    <h1 class="h1" style="color:#fff;">BTS NDRC</h1>
+    <p class="lead" style="color:var(--navy-200);margin-top:14px;max-width:680px;">
+      Négociation &amp; Digitalisation de la Relation Client — prospection, négociation, relation client omnicanale
+      et digitale, animation de réseaux de distribution.
+    </p>
+    <div class="filters" style="margin-top:20px;">
+      <span class="badge badge--navy" style="background:rgba(255,255,255,.12);color:#fff;">RNCP 38368</span>
+      <span class="badge" style="background:var(--success-bg);color:var(--success-fg);">Éligible CPF</span>
+      <span class="badge" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.75);">Accessible VAE</span>
     </div>
   </div>
-</div>
-<div class="hero-border"></div>
+</section>
 
-<!-- ─── CONTENU PRINCIPAL ─── -->
-<div class="page-wrap">
+<!-- ─── CONTENU ─── -->
+<div class="detail__cols">
 
   <main>
 
-    <section class="section">
-      <h2>Objectif de la formation</h2>
-      <p>Le titulaire du BTS NDRC exerce son activité dans toute forme d'organisation — artisanale, commerciale ou industrielle, associative, publique — proposant des biens ou des prestations de services, quelle que soit sa taille, dès lors qu'elle met en œuvre une démarche commerciale. Il assure la prise en charge internalisée ou externalisée de tout type de relation client.</p>
-      <p>Titre certifié de niveau 5, enregistré par France Compétences le 01/01/2024 avec une échéance au 31/12/2028, code NSF 312, sous l'intitulé « BTS — Négociation et digitalisation de la relation client », délivré par le Ministère de l'Enseignement Supérieur et de la Recherche.</p>
-    </section>
+    <div class="detail-block">
+      <h2 class="h2">Objectif de la formation</h2>
+      <p>Le titulaire du BTS NDRC prospecte, négocie et accompagne la relation client dans un contexte omnicanal. Il participe à la définition de la politique commerciale et anime un réseau de distribution ou d'unités commerciales, en intégrant pleinement les outils digitaux dans ses pratiques.</p>
+      <p>Titre certifié de niveau 5, codes NSF 312, enregistré au RNCP sous le numéro 38368, échéance au 31/12/2028.</p>
+    </div>
 
-    <section class="section">
-      <h2>Objectifs pédagogiques</h2>
+    <div class="detail-block">
+      <h2 class="h2">Objectifs pédagogiques</h2>
       <ul class="check-list">
-        <li>Cibler et prospecter la clientèle</li>
-        <li>Négocier et accompagner la relation client</li>
-        <li>Organiser et animer un évènement commercial</li>
-        <li>Exploiter et mutualiser l'information commerciale</li>
-        <li>Maîtriser la relation omnicanale</li>
-        <li>Animer la relation client digitale</li>
-        <li>Développer la relation client en e-commerce</li>
-        <li>Implanter et promouvoir l'offre chez des distributeurs</li>
-        <li>Développer et animer un réseau de partenaires</li>
-        <li>Créer et animer un réseau de vente directe</li>
+        <li>Mettre en œuvre un projet de veille commerciale et exploiter l'information commerciale</li>
+        <li>Organiser et exploiter l'information commerciale dans une logique omnicanale</li>
+        <li>Concevoir et déployer une stratégie de prospection multicanale</li>
+        <li>Négocier et accompagner la relation client (B2B et B2C)</li>
+        <li>Organiser et animer un réseau de partenaires ou d'unités commerciales</li>
+        <li>Exploiter et optimiser un système d'information commerciale (CRM)</li>
+        <li>Mobiliser les outils digitaux au service de la performance commerciale</li>
+        <li>Manager une équipe commerciale</li>
+        <li>Rendre compte de son activité et analyser sa performance commerciale</li>
+        <li>Communiquer en anglais des affaires dans un contexte commercial</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Plan détaillé de la formation</h2>
+    <div class="detail-block">
+      <h2 class="h2">Plan détaillé de la formation</h2>
       <div class="module-list">
 
         <div class="module open">
           <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
-            <span class="module-title">Bloc 1 – Relation client et négociation-vente</span>
+            <span class="module-title">Bloc 1 – Vendre dans un cadre omnicanal</span>
             <span class="module-toggle">+</span>
           </div>
           <div class="module-body">
             <ul class="check-list">
-              <li>Cibler et prospecter la clientèle</li>
-              <li>Négocier et accompagner la relation client</li>
-              <li>Organiser et animer un évènement commercial</li>
-              <li>Exploiter et mutualiser l'information commerciale</li>
-              <li>Marketing : stratégique/opérationnel, marché, comportement d'achat, politique de marque, marketing évènementiel et relationnel, prospection</li>
-              <li>Savoirs technologiques/web : veille commerciale, système d'information commerciale, CRM, outils de communication et de gestion commerciale</li>
+              <li>Cibler et prospecter la clientèle, prendre contact et mener un entretien de vente</li>
+              <li>Conduire une négociation commerciale, formaliser une proposition commerciale</li>
+              <li>Assurer la qualité dans la relation client et accompagner sa montée en compétences</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · E4 (U4) :</strong> Épreuve orale, coefficient 5, durée 40 min + 1h de préparation.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP38368BC01 :</strong> Épreuve E4 — Relation client et négociation-vente.</div>
           </div>
         </div>
 
         <div class="module">
           <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
-            <span class="module-title">Bloc 2 – Relation client à distance et digitalisation</span>
+            <span class="module-title">Bloc 2 – Gérer la relation client dans sa globalité</span>
             <span class="module-toggle">+</span>
           </div>
           <div class="module-body">
             <ul class="check-list">
-              <li>Maîtriser la relation omnicanale</li>
-              <li>Animer la relation client digitale</li>
-              <li>Développer la relation client en e-commerce</li>
-              <li>Web-marketing et e-commerce : stratégies des médias communautaires, e-réputation, community management, réseaux sociaux, inbound marketing, data client</li>
-              <li>Savoirs technologiques/web : outils de communication à distance, supervision et gestion d'appels, production de contenus digitaux, référencement web, analyse de data client</li>
+              <li>Exploiter et optimiser le système d'information commerciale (CRM)</li>
+              <li>Optimiser l'expérience client omnicanale</li>
+              <li>Gérer la relation client à distance et en multicanal</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · E5 (U5) :</strong> Épreuve écrite et pratique, coefficient 4, durée 3h + 40 min.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP38368BC02 :</strong> Épreuve E5 — Relation client à distance et digitalisation.</div>
           </div>
         </div>
 
         <div class="module">
           <div class="module-header" onclick="this.parentElement.classList.toggle('open')">
-            <span class="module-title">Bloc 3 – Relation client et animation de réseaux</span>
+            <span class="module-title">Bloc 3 – Manager l'équipe commerciale</span>
             <span class="module-toggle">+</span>
           </div>
           <div class="module-body">
             <ul class="check-list">
-              <li>Implanter et promouvoir l'offre chez des distributeurs</li>
-              <li>Développer et animer un réseau de partenaires</li>
-              <li>Créer et animer un réseau de vente directe</li>
-              <li>Marketing et techniques de vente en grande distribution, réseaux et stratégies de distribution</li>
-              <li>Management : organisation du réseau, pilotage de l'activité commerciale, management relationnel et opérationnel, gestion de projet</li>
+              <li>Organiser et animer un réseau de partenaires/unités commerciales</li>
+              <li>Manager l'équipe commerciale</li>
+              <li>Mettre en œuvre la politique commerciale de l'unité</li>
             </ul>
-            <div class="eval-note">
-              <strong>Évaluation · E6 (U6) :</strong> Épreuve orale, coefficient 3, durée 40 min.
-            </div>
+            <div class="eval-note"><strong>Évaluation · RNCP38368BC03 :</strong> Épreuve E6 — Management de l'équipe commerciale.</div>
           </div>
         </div>
 
@@ -544,10 +132,9 @@
           </div>
           <div class="module-body">
             <ul class="check-list">
-              <li>Culture générale et expression (E1 — écrite 4h, coeff. 3)</li>
-              <li>Langue vivante étrangère 1 (E2 — orale 30 + 30 min, coeff. 3)</li>
-              <li>Culture économique, juridique et managériale — CEJM (E3 — écrite 4h, coeff. 3)</li>
-              <li>Savoirs transverses : management d'équipe, gestion commerciale, statistiques, savoirs rédactionnels et juridiques</li>
+              <li>Culture générale et expression (E1)</li>
+              <li>Communication en langue vivante étrangère — Anglais (E2)</li>
+              <li>Culture économique, juridique et managériale (E3)</li>
             </ul>
           </div>
         </div>
@@ -559,128 +146,75 @@
           </div>
           <div class="module-body">
             <ul class="check-list">
+              <li>Pédagogie active : mises en situation commerciale, jeux de rôle, études de cas réels</li>
               <li>Formation en présentiel sur campus, en alternance entreprise/centre de formation</li>
-              <li>Animation interactive alternant apports théoriques, mises en situation commerciales et études de cas</li>
-              <li>Travaux de groupe et projets de prospection/négociation réels</li>
-              <li>Évaluations formatives régulières tout au long du parcours</li>
+              <li>Utilisation d'un CRM professionnel et d'outils digitaux de prospection</li>
             </ul>
           </div>
         </div>
 
       </div>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Compétences acquises</h2>
-      <p>À l'issue de cette formation, le candidat est capable d'assurer tout type de relation client — en présentiel, à distance ou en réseau de distribution — pour le compte d'une organisation marchande, en mobilisant des compétences de négociation, de digitalisation et de pilotage commercial.</p>
+    <div class="detail-block">
+      <h2 class="h2">Compétences acquises</h2>
+      <p>À l'issue de cette formation, le candidat est capable de prospecter, négocier et fidéliser une clientèle dans un environnement omnicanal, de gérer un système d'information commerciale et d'animer une équipe ou un réseau de distribution.</p>
       <ul class="check-list">
-        <li>Prospection, négociation et fidélisation de la clientèle</li>
-        <li>Pilotage de la relation client omnicanale et digitale (CRM, e-commerce, réseaux sociaux)</li>
-        <li>Animation et développement d'un réseau de distribution ou de partenaires</li>
-        <li>Utilisation des outils technologiques et data de la relation commerciale</li>
-        <li>Communication professionnelle et culture économique, juridique et managériale</li>
+        <li>Maîtrise du cycle de vente complet, de la prospection à la fidélisation</li>
+        <li>Exploitation d'un CRM et des outils digitaux de la relation client</li>
+        <li>Animation de réseaux de distribution et management d'équipe commerciale</li>
+        <li>Analyse de la performance commerciale et reporting</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Modalités d'évaluation (examen final)</h2>
+    <div class="detail-block">
+      <h2 class="h2">Modalités d'évaluation</h2>
       <table class="eval-table">
-        <thead>
-          <tr>
-            <th>Épreuve</th>
-            <th>Unité</th>
-            <th>Coeff.</th>
-            <th>Forme</th>
-            <th>Durée</th>
-          </tr>
-        </thead>
+        <thead><tr><th>Épreuve</th><th>Description</th><th>Coefficient</th></tr></thead>
         <tbody>
-          <tr>
-            <td><strong>E1 — Culture générale et expression</strong></td>
-            <td>U1</td>
-            <td>3</td>
-            <td>Écrite</td>
-            <td class="eval-dur">4 h</td>
-          </tr>
-          <tr>
-            <td><strong>E2 — Langue vivante étrangère 1</strong></td>
-            <td>U2</td>
-            <td>3</td>
-            <td>Orale</td>
-            <td class="eval-dur">30 + 30 min</td>
-          </tr>
-          <tr>
-            <td><strong>E3 — Culture économique, juridique et managériale</strong></td>
-            <td>U3</td>
-            <td>3</td>
-            <td>Écrite</td>
-            <td class="eval-dur">4 h</td>
-          </tr>
-          <tr>
-            <td><strong>E4 — Relation client et négociation-vente</strong></td>
-            <td>U4</td>
-            <td>5</td>
-            <td>Orale</td>
-            <td class="eval-dur">40 min + 1h</td>
-          </tr>
-          <tr>
-            <td><strong>E5 — Relation client à distance et digitalisation</strong></td>
-            <td>U5</td>
-            <td>4</td>
-            <td>Écrite + Pratique</td>
-            <td class="eval-dur">3h + 40 min</td>
-          </tr>
-          <tr>
-            <td><strong>E6 — Relation client et animation de réseaux</strong></td>
-            <td>U6</td>
-            <td>3</td>
-            <td>Orale</td>
-            <td class="eval-dur">40 min</td>
-          </tr>
-          <tr>
-            <td colspan="3"><strong>Total des coefficients</strong></td>
-            <td colspan="2" class="eval-dur">21</td>
-          </tr>
+          <tr><td><strong>E1 – Culture générale et expression</strong></td><td>Épreuve écrite</td><td class="eval-dur">2</td></tr>
+          <tr><td><strong>E2 – Anglais</strong></td><td>Épreuve écrite et orale</td><td class="eval-dur">3</td></tr>
+          <tr><td><strong>E3 – Culture éco., juridique et managériale</strong></td><td>Épreuve écrite</td><td class="eval-dur">3</td></tr>
+          <tr><td><strong>E4 – Relation client et négociation-vente</strong></td><td>Épreuve orale sur dossier professionnel</td><td class="eval-dur">4</td></tr>
+          <tr><td><strong>E5 – Relation client à distance et digitalisation</strong></td><td>Étude de cas écrite</td><td class="eval-dur">4</td></tr>
+          <tr><td><strong>E6 – Management de l'équipe commerciale</strong></td><td>Épreuve orale sur dossier professionnel</td><td class="eval-dur">5</td></tr>
+          <tr><td colspan="2"><strong>Total coefficients</strong></td><td class="eval-dur">21</td></tr>
         </tbody>
       </table>
-      <p class="eval-note-small">Validation par bloc : non. Pour valider la certification, l'apprenant doit obtenir une note moyenne minimale de 10/20 à l'examen final du BTS. Contrat de professionnalisation, contrat d'apprentissage ou stage de 16 semaines.</p>
-    </section>
+      <p class="eval-note-small">Référentiel défini par le Ministère de l'Éducation Nationale — diplôme national de BTS.</p>
+    </div>
 
-    <section class="section">
-      <h2>Débouchés professionnels</h2>
-      <p>Toute forme d'organisation mettant en œuvre une démarche commerciale : entreprises artisanales, commerciales, industrielles, associatives ou publiques.</p>
+    <div class="detail-block">
+      <h2 class="h2">Débouchés professionnels</h2>
       <ul class="check-list">
-        <li>Représentant(e), négociateur(rice), conseiller(ère) ou chargé(e) d'affaires/clientèle, technico-commercial(e)</li>
-        <li>Télévendeur(se), téléconseiller(ère), conseiller(ère) client à distance, chargé(e) d'assistance</li>
-        <li>Animateur(rice) commercial(e) e-commerce, assistant(e) responsable e-commerce</li>
-        <li>Marchandiseur(se), chef(fe) de secteur, animateur(rice) de réseau ou des ventes</li>
-        <li>Avec expérience : superviseur(se), responsable d'équipe, responsable e-commerce, chef(fe) ou directeur(rice) de réseau</li>
+        <li>Négociateur(trice) / Chargé(e) d'affaires</li>
+        <li>Responsable de clientèle / Account manager</li>
+        <li>Animateur(trice) de réseau de distribution</li>
+        <li>Responsable e-commerce / Chargé(e) de relation client digitale</li>
+        <li>Manager commercial junior</li>
       </ul>
-    </section>
+    </div>
 
-    <section class="section">
-      <h2>Poursuites d'études possibles</h2>
+    <div class="detail-block">
+      <h2 class="h2">Poursuites d'études possibles</h2>
       <ul class="check-list">
-        <li>BAC+3 — CDRH (Chargé du Développement des Ressources Humaines)</li>
-        <li>BAC+3 — RDC (Responsable du Développement Commercial)</li>
-        <li>BAC+3 — CPBA</li>
+        <li>Bac+3 Chargé(e) du Développement des Ressources Humaines (CDRH)</li>
+        <li>Bac+3 Responsable du Développement Commercial (RDC)</li>
+        <li>Bac+3 Chargé(e) de Projets Banque-Assurance (CPBA)</li>
       </ul>
-    </section>
+    </div>
 
   </main>
 
-  <!-- ── SIDEBAR ── -->
-  <aside class="sidebar">
-
-    <div class="sb-label">Réf. NDRC-001</div>
+  <!-- ── ASIDE ── -->
+  <aside class="detail__aside">
 
     <div class="sb-card">
       <div class="sb-card-head">Public concerné</div>
       <div class="sb-card-body">
-        <p>Titulaires du BAC ou d'un titre équivalent (Niveau 4 européen) souhaitant exercer dans la relation client, la vente ou le commerce.</p>
-        <p style="font-size:var(--text-xs);color:var(--fg-muted);">Candidature via Parcoursup ou directement auprès d'Homnéo Business School. Site accessible aux personnes en situation de handicap.</p>
-        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-primary" style="margin-top:var(--space-3);">Le programme</a>
-        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn-cta">Je souhaite m'inscrire</a>
+        <p>Titulaires d'un diplôme de niveau 4 (Bac), souhaitant exercer dans la vente, la négociation et la relation client.</p>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--primary btn--block" style="margin-top:var(--space-3);">Le programme</a>
+        <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--gold btn--block" style="margin-top:8px;">Je souhaite m'inscrire</a>
       </div>
     </div>
 
@@ -688,57 +222,19 @@
       <div class="sb-card-head">Coût pédagogique</div>
       <div class="sb-card-body">
         <div class="price-display">Gratuit*</div>
-        <div class="price-sub">*En contrat d'apprentissage ou de professionnalisation (pris en charge à 100% par l'entreprise)</div>
-        <p style="font-size:var(--text-xs);color:var(--fg-muted);">Financement individuel : <strong>4 000 € nets/an</strong><br>Hors contrat d'alternance — nous consulter.</p>
+        <div class="price-sub">*En contrat d'apprentissage ou de professionnalisation</div>
+        <p style="font-size:var(--text-xs);color:var(--fg-muted);">Financement individuel : <strong>4 000 € nets/an</strong></p>
       </div>
     </div>
 
     <div class="sb-card">
       <div class="sb-card-head">Détails pratiques</div>
       <div class="sb-card-body">
-        <div class="detail-row">
-          <span class="detail-icon">🎓</span>
-          <div class="detail-content">
-            <span class="detail-label">Niveau visé</span>
-            <span class="detail-value">Niveau 5 (Bac+2)</span>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">⏱</span>
-          <div class="detail-content">
-            <span class="detail-label">Durée</span>
-            <span class="detail-value">Environ 1350 heures · 2 ans</span>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">📍</span>
-          <div class="detail-content">
-            <span class="detail-label">Lieux de formation</span>
-            <span class="detail-value">Homneo Business School</span>
-            <div class="detail-sub">Belfort · Mulhouse · Wittelsheim · Ingersheim · Famars · Saint-Louis</div>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">🖥</span>
-          <div class="detail-content">
-            <span class="detail-label">Modalité</span>
-            <span class="detail-value">Présentiel</span>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">📅</span>
-          <div class="detail-content">
-            <span class="detail-label">Rentrée</span>
-            <span class="detail-value">Septembre 2026</span>
-          </div>
-        </div>
-        <div class="detail-row">
-          <span class="detail-icon">👥</span>
-          <div class="detail-content">
-            <span class="detail-label">Capacité</span>
-            <span class="detail-value">24 par site</span>
-          </div>
-        </div>
+        <div class="detail-row"><span class="detail-icon">🎓</span><div class="detail-content"><span class="detail-label">Niveau visé</span><span class="detail-value">Niveau 5 (Bac+2)</span></div></div>
+        <div class="detail-row"><span class="detail-icon">⏱</span><div class="detail-content"><span class="detail-label">Durée</span><span class="detail-value">24 mois</span></div></div>
+        <div class="detail-row"><span class="detail-icon">📍</span><div class="detail-content"><span class="detail-label">Lieux</span><span class="detail-value">Homneo Business School</span><div class="detail-sub">Campus multi-sites</div></div></div>
+        <div class="detail-row"><span class="detail-icon">🖥</span><div class="detail-content"><span class="detail-label">Modalité</span><span class="detail-value">Présentiel</span></div></div>
+        <div class="detail-row"><span class="detail-icon">📅</span><div class="detail-content"><span class="detail-label">Rentrée</span><span class="detail-value">Septembre 2026</span></div></div>
       </div>
     </div>
 
@@ -746,22 +242,9 @@
       <div class="sb-card-head">Pré-requis</div>
       <div class="sb-card-body">
         <ul class="sb-check-list">
-          <li>BAC ou titre équivalent (Niveau 4 européen)</li>
-          <li>Aisance relationnelle et goût pour le commerce</li>
-          <li>Intérêt pour les outils digitaux et le e-commerce</li>
-          <li>Projet professionnel à valider en amont</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="sb-card">
-      <div class="sb-card-head">Modalités d'accès</div>
-      <div class="sb-card-body">
-        <ul class="sb-check-list">
-          <li>Candidature via Parcoursup ou en direct auprès d'Homnéo Business School</li>
-          <li>Entretien individuel de candidature</li>
-          <li>Dossier de candidature (CV + lettre de motivation)</li>
-          <li>Recherche d'une entreprise d'accueil en alternance</li>
+          <li>Diplôme de niveau 4 (Bac)</li>
+          <li>Aisance relationnelle et goût du contact</li>
+          <li>Projet professionnel validé</li>
         </ul>
       </div>
     </div>
@@ -770,10 +253,8 @@
       <div class="sb-card-head">Validation de la certification</div>
       <div class="sb-card-body">
         <ul class="sb-check-list">
-          <li>6 épreuves (E1 à E6) — coefficient total 21</li>
-          <li>Note moyenne minimale de 10/20 exigée</li>
-          <li>Validation par bloc : non</li>
-          <li>Accessible par la Validation des Acquis de l'Expérience (VAE)</li>
+          <li>6 épreuves (E1 à E6), coefficient total 21</li>
+          <li>Accessible par la VAE</li>
         </ul>
       </div>
     </div>
@@ -795,10 +276,10 @@
 
     <div class="legal-note">
       <strong>Informations réglementaires</strong><br>
-      BTS délivré par le <strong>Ministère de l'Enseignement Supérieur et de la Recherche</strong> (Éducation Nationale).<br>
+      Diplôme national délivré par le <strong>Ministère de l'Éducation Nationale</strong>.<br>
       RNCP 38368 · NSF 312<br>
-      Enregistré le 01/01/2024 · Échéance 31/12/2028.<br>
-      Accessible par la VAE. Validation par bloc : non.<br><br>
+      Échéance 31/12/2028.<br>
+      Accessible par la VAE.<br><br>
       Référent handicap : <a href="mailto:thomas.b@homneo.fr">thomas.b@homneo.fr</a><br>
       Référent qualité : <a href="mailto:sebastien.l@homneo.fr">sebastien.l@homneo.fr</a>
     </div>
@@ -809,15 +290,33 @@
 
 <!-- ─── FOOTER ─── -->
 <footer class="footer">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <img src="../homneo-logo-white.png" alt="Homneo Business School" />
-    </div>
-    <div class="footer-copy">
-      <strong>Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes
+  <div class="footer__inner">
+    <div>
+      <img src="../homneo-logo-onnavy.png" alt="Homneo Business School" class="footer__logo" />
+      <p style="font-size:14px;line-height:1.7;color:var(--navy-300);max-width:280px;margin:0 0 18px;">
+        L'école de commerce qui accompagne chaque alternant de l'admission jusqu'à l'emploi.
+      </p>
     </div>
     <div>
-      homneo-business-school.fr · <a href="tel:0660939003">06 60 93 90 03</a>
+      <h4>Formations</h4>
+      <a href="../index.html#rh">Ressources Humaines</a>
+      <a href="../index.html#commerce">Commerce &amp; Management</a>
+      <a href="../index.html#immobilier">Immobilier &amp; Banque</a>
+    </div>
+    <div>
+      <h4>L'école</h4>
+      <a href="https://imt-formation.fr/" target="_blank" rel="noopener">Catalogue complet</a>
+      <a href="mailto:stephanie.marchal@homneo.fr">Contact</a>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:stephanie.marchal@homneo.fr">stephanie.marchal@homneo.fr</a>
+      <a href="tel:0660939003">06 60 93 90 03</a>
+    </div>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar-inner">
+      <span><strong style="color:#fff;">Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes</span>
     </div>
   </div>
 </footer>

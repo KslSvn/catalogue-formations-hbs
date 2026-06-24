@@ -13,11 +13,13 @@
   <div class="nav__inner">
     <a href="#top"><img src="homneo-logo.png" alt="Homneo Business School" class="nav__logo" /></a>
     <div class="nav__links">
-      <a class="nav__link is-active" href="#rh">Ressources Humaines</a>
+      <a class="nav__link" href="#rh">Ressources Humaines</a>
       <a class="nav__link" href="#commerce">Commerce &amp; Management</a>
-      <a class="nav__link" href="#immobilier">Immobilier &amp; Banque</a>
+      <a class="nav__link" href="#immobilier">Immobilier</a>
+      <a class="nav__link" href="#tourisme">Tourisme</a>
       <a class="nav__link" href="#communication">Communication</a>
       <a class="nav__link" href="#finance">Finance &amp; Gestion</a>
+      <a class="nav__link" href="#management">Data &amp; IA</a>
     </div>
     <div class="nav__spacer"></div>
     <a href="mailto:stephanie.marchal@homneo.fr" class="btn btn--primary btn--sm">Je candidate</a>
@@ -33,10 +35,9 @@
     <span class="eyebrow" style="color:var(--gold-500)">Homneo Business School / Catalogue des formations</span>
     <h1 class="h1" style="margin-top:16px;">Le catalogue des formations</h1>
     <p class="lead" style="margin-top:18px;">
-      Retrouvez ici l'ensemble des fiches formation Homneo Business School, organisées par filière.
-      Ce catalogue est alimenté progressivement à partir de l'offre complète présentée sur
-      <a href="https://imt-formation.fr/" target="_blank" rel="noopener" style="color:var(--cyan-200);text-decoration:underline;">imt-formation.fr</a> —
-      chaque fiche est republiée ici au fur et à mesure de sa mise en forme.
+      L'ensemble des formations Homneo Business School organisées par filière — du BTS au Mastère,
+      de l'alternance aux titres professionnels. Chaque fiche détaille le programme, les modalités
+      d'évaluation et les informations pratiques pour candidater.
     </p>
   </div>
 </section>
@@ -44,45 +45,38 @@
 <!-- ─── STATS STRIP ─── -->
 <section class="stats">
   <div class="stats__inner">
-    <div><div class="stat__num">5</div><div class="stat__label">Filières</div></div>
-    <div><div class="stat__num">18</div><div class="stat__label">Formations visées</div></div>
-    <div><div class="stat__num">4</div><div class="stat__label">Fiches publiées</div></div>
+    <div><div class="stat__num">7</div><div class="stat__label">Filières</div></div>
+    <div><div class="stat__num">19</div><div class="stat__label">Formations</div></div>
+    <div><div class="stat__num">19</div><div class="stat__label">Fiches publiées</div></div>
   </div>
 </section>
 
 <!-- ─── CONTENU ─── -->
 <div class="section">
 
-  <div class="intro-note">
-    <strong>Comment lire ce catalogue ?</strong> Chaque filière reprend la structure de l'offre Homneo Business School
-    (BTS, Titres Professionnels, Bachelors, Mastères). Les fiches déjà disponibles s'ouvrent en un clic ; les autres
-    formations sont signalées « à venir » et seront ajoutées au fil de leur publication.
-  </div>
-
   <div class="filters" style="margin-bottom:40px;">
     <a class="chip is-active" href="#top">Toutes</a>
     <a class="chip" href="#rh">Ressources Humaines</a>
     <a class="chip" href="#commerce">Commerce &amp; Management</a>
-    <a class="chip" href="#immobilier">Immobilier &amp; Banque</a>
+    <a class="chip" href="#immobilier">Immobilier</a>
+    <a class="chip" href="#tourisme">Tourisme</a>
     <a class="chip" href="#communication">Communication</a>
     <a class="chip" href="#finance">Finance &amp; Gestion</a>
+    <a class="chip" href="#management">Data &amp; IA</a>
   </div>
 
-  <!-- RESSOURCES HUMAINES -->
+  <!-- ══════════════════════════════════════════ RESSOURCES HUMAINES -->
   <div class="filiere-block" id="rh" data-filiere="rh">
     <div class="filiere-header">
       <h2 class="h2">Ressources Humaines</h2>
-      <span class="fil-chip">2 / 3 publiées</span>
+      <span class="fil-chip">4 / 4 publiées</span>
     </div>
     <div class="grid">
 
       <a class="pcard" href="TP/TP-ARH.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--cyan">Ressources Humaines</span>
-            <span class="lvl">Bac+2</span>
-          </div>
+          <div class="pcard__row"><span class="badge badge--cyan">Ressources Humaines</span><span class="lvl">Bac+2</span></div>
           <h3 class="pcard__code">TP Assistant RH</h3>
           <p class="pcard__titre">Gestion administrative du personnel, contribution au recrutement et au développement des compétences · RNCP 41366</p>
           <div class="pcard__foot">Niveau 5 · 1 an<span class="spacer"></span>Voir la fiche →</div>
@@ -92,140 +86,249 @@
       <a class="pcard" href="TP/TP-Gestionnaire-de-paie.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--cyan">Ressources Humaines</span>
-            <span class="lvl">Bac+2</span>
-          </div>
+          <div class="pcard__row"><span class="badge badge--cyan">Ressources Humaines</span><span class="lvl">Bac+2</span></div>
           <h3 class="pcard__code">TP Gestionnaire de Paie</h3>
           <p class="pcard__titre">Réalisation de la paie, déclarations sociales (DSN) et suivi administratif du personnel · RNCP 37948</p>
           <div class="pcard__foot">Niveau 5 · 861 h<span class="spacer"></span>Voir la fiche →</div>
         </div>
       </a>
 
-      <div class="pcard is-placeholder">
+      <a class="pcard" href="RH/CDRH.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--cyan">Ressources Humaines</span>
-            <span class="lvl">À venir</span>
-          </div>
-          <h3 class="pcard__code">3ᵉ formation RH</h3>
-          <p class="pcard__titre">Fiche en cours de mise en forme — publication à venir.</p>
+          <div class="pcard__row"><span class="badge badge--cyan">Ressources Humaines</span><span class="lvl">Bac+3</span></div>
+          <h3 class="pcard__code">BAC+3 CDRH</h3>
+          <p class="pcard__titre">Chargé du Développement des Ressources Humaines — recrutement, formation, GPEC et relations sociales · RNCP 41128</p>
+          <div class="pcard__foot">Niveau 6 · 12 mois<span class="spacer"></span>Voir la fiche →</div>
         </div>
-      </div>
+      </a>
+
+      <a class="pcard" href="RH/MRH.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--cyan">Ressources Humaines</span><span class="lvl">Bac+5</span></div>
+          <h3 class="pcard__code">BAC+5 MRH</h3>
+          <p class="pcard__titre">Manager des Ressources Humaines — stratégie RH, relations sociales et conduite du changement · RNCP 38460</p>
+          <div class="pcard__foot">Niveau 7 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
 
     </div>
   </div>
 
-  <!-- COMMERCE, MARKETING & MANAGEMENT -->
+  <!-- ══════════════════════════════════════════ COMMERCE & MANAGEMENT -->
   <div class="filiere-block" id="commerce" data-filiere="commercial">
     <div class="filiere-header">
       <h2 class="h2">Commerce, Marketing &amp; Management</h2>
-      <span class="fil-chip">2 / 8 publiées</span>
+      <span class="fil-chip">5 / 5 publiées</span>
     </div>
     <div class="grid">
 
       <a class="pcard" href="Commerce/BTS-NDRC.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--gold">Commerce &amp; Management</span>
-            <span class="lvl">Bac+2</span>
-          </div>
+          <div class="pcard__row"><span class="badge badge--gold">Commerce &amp; Management</span><span class="lvl">Bac+2</span></div>
           <h3 class="pcard__code">BTS NDRC</h3>
           <p class="pcard__titre">Négociation &amp; Digitalisation de la Relation Client · RNCP 38368</p>
           <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
         </div>
       </a>
 
+      <a class="pcard" href="Commerce/BTS-MCO.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--gold">Commerce &amp; Management</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS MCO</h3>
+          <p class="pcard__titre">Management Commercial Opérationnel — gestion et animation d'une unité commerciale</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+      <a class="pcard" href="Commerce/BTS-Opticien-Lunetier.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--gold">Commerce &amp; Management</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS Opticien-Lunetier</h3>
+          <p class="pcard__titre">Mesure de la réfraction, délivrance d'équipements optiques, gestion d'un magasin · RNCP 38360</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+      <a class="pcard" href="Commerce/RDC.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--gold">Commerce &amp; Management</span><span class="lvl">Bac+3</span></div>
+          <h3 class="pcard__code">BAC+3 RDC</h3>
+          <p class="pcard__titre">Responsable du Développement Commercial — stratégie commerciale, négociation B2B, management · RNCP 37849</p>
+          <div class="pcard__foot">Niveau 6 · 12 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
       <a class="pcard" href="Commerce/MSDMC.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--gold">Commerce &amp; Management</span>
-            <span class="lvl">Bac+5</span>
-          </div>
+          <div class="pcard__row"><span class="badge badge--gold">Commerce &amp; Management</span><span class="lvl">Bac+5</span></div>
           <h3 class="pcard__code">MSDMC</h3>
           <p class="pcard__titre">Manager de la Stratégie Digitale, Marketing et Commerciale · RNCP 41475</p>
           <div class="pcard__foot">Niveau 7 · 2 ans<span class="spacer"></span>Voir la fiche →</div>
         </div>
       </a>
 
-      <div class="pcard is-placeholder">
-        <div class="pcard__top"></div>
-        <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--gold">Commerce &amp; Management</span>
-            <span class="lvl">À venir</span>
-          </div>
-          <h3 class="pcard__code">6 autres formations</h3>
-          <p class="pcard__titre">BTS MCO, BTS GTLA, BTS Tourisme, RDC, Ingénieur d'affaires, EVPM — en cours de publication.</p>
-        </div>
-      </div>
-
     </div>
   </div>
 
-  <!-- IMMOBILIER & BANQUE -->
+  <!-- ══════════════════════════════════════════ IMMOBILIER -->
   <div class="filiere-block" id="immobilier" data-filiere="banque">
     <div class="filiere-header">
-      <h2 class="h2">Immobilier &amp; Banque</h2>
-      <span class="fil-chip">0 / 3 publiées</span>
+      <h2 class="h2">Immobilier</h2>
+      <span class="fil-chip">1 / 1 publiée</span>
     </div>
     <div class="grid">
-      <div class="pcard is-placeholder">
+
+      <a class="pcard" href="Immobilier/BTS-PI.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--navy">Immobilier &amp; Banque</span>
-            <span class="lvl">À venir</span>
-          </div>
-          <h3 class="pcard__code">3 formations</h3>
-          <p class="pcard__titre">BTS Professions Immobilières et diplômes Immobilier/Banque — en cours de publication.</p>
+          <div class="pcard__row"><span class="badge badge--navy">Immobilier</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS Professions Immobilières</h3>
+          <p class="pcard__titre">Transaction, gestion locative et administration de copropriété · RNCP 38380</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
         </div>
-      </div>
+      </a>
+
     </div>
   </div>
 
-  <!-- COMMUNICATION -->
+  <!-- ══════════════════════════════════════════ TOURISME -->
+  <div class="filiere-block" id="tourisme" data-filiere="reconversion">
+    <div class="filiere-header">
+      <h2 class="h2">Tourisme</h2>
+      <span class="fil-chip">2 / 2 publiées</span>
+    </div>
+    <div class="grid">
+
+      <a class="pcard" href="Tourisme/BTS-Tourisme.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Tourisme</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS Tourisme</h3>
+          <p class="pcard__titre">Conception et commercialisation de produits touristiques, accueil et animation de clientèles internationales · RNCP 37890</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+      <a class="pcard" href="Tourisme/BAC3-Tourisme.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Tourisme</span><span class="lvl">Bac+3</span></div>
+          <h3 class="pcard__code">BAC+3 Tourisme</h3>
+          <p class="pcard__titre">Responsable d'Établissement Touristique — direction opérationnelle, yield management, management d'équipe</p>
+          <div class="pcard__foot">Niveau 6 · 12 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ COMMUNICATION -->
   <div class="filiere-block" id="communication">
     <div class="filiere-header">
       <h2 class="h2">Communication</h2>
-      <span class="fil-chip">0 / 2 publiées</span>
+      <span class="fil-chip">2 / 2 publiées</span>
     </div>
     <div class="grid">
-      <div class="pcard is-placeholder">
+
+      <a class="pcard" href="Communication/BTS-Communication.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--navy">Communication</span>
-            <span class="lvl">À venir</span>
-          </div>
-          <h3 class="pcard__code">2 formations</h3>
-          <p class="pcard__titre">Diplômes Communication plurimédia — en cours de publication.</p>
+          <div class="pcard__row"><span class="badge badge--navy">Communication</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS Communication</h3>
+          <p class="pcard__titre">Conception, production et diffusion de communications plurimédias pour annonceurs et agences · RNCP 37198</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
         </div>
-      </div>
+      </a>
+
+      <a class="pcard" href="Communication/CM.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Communication</span><span class="lvl">Bac+3</span></div>
+          <h3 class="pcard__code">BAC+3 Chef de Projet Com &amp; Marketing</h3>
+          <p class="pcard__titre">Stratégie de communication 360°, marketing digital et pilotage de campagnes omnicanales · RNCP 40907</p>
+          <div class="pcard__foot">Niveau 6 · 12 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
     </div>
   </div>
 
-  <!-- FINANCE & GESTION -->
-  <div class="filiere-block" id="finance">
+  <!-- ══════════════════════════════════════════ FINANCE & GESTION -->
+  <div class="filiere-block" id="finance" data-filiere="banque">
     <div class="filiere-header">
       <h2 class="h2">Finance &amp; Gestion</h2>
-      <span class="fil-chip">0 / 2 publiées</span>
+      <span class="fil-chip">4 / 4 publiées</span>
     </div>
     <div class="grid">
-      <div class="pcard is-placeholder">
+
+      <a class="pcard" href="Gestion/BTS-GPME.html">
         <div class="pcard__top"></div>
         <div class="pcard__body">
-          <div class="pcard__row">
-            <span class="badge badge--navy">Finance &amp; Gestion</span>
-            <span class="lvl">À venir</span>
-          </div>
-          <h3 class="pcard__code">2 formations</h3>
-          <p class="pcard__titre">Diplômes Finance &amp; Gestion — en cours de publication.</p>
+          <div class="pcard__row"><span class="badge badge--navy">Finance &amp; Gestion</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS GPME</h3>
+          <p class="pcard__titre">Gestion de la PME — administration, gestion clients/fournisseurs, assistance au dirigeant · RNCP 38363</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
         </div>
-      </div>
+      </a>
+
+      <a class="pcard" href="Gestion/BTS-CG.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Finance &amp; Gestion</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS Comptabilité et Gestion</h3>
+          <p class="pcard__titre">Comptabilité financière, fiscalité, contrôle de gestion et états financiers · RNCP 39159</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+      <a class="pcard" href="Gestion/BTS-GTLA.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Finance &amp; Gestion</span><span class="lvl">Bac+2</span></div>
+          <h3 class="pcard__code">BTS GTLA</h3>
+          <p class="pcard__titre">Gestion des Transports et Logistique Associée — multimodal, supply chain, douane · RNCP 38365</p>
+          <div class="pcard__foot">Niveau 5 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+      <a class="pcard" href="Gestion/ECGP.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge badge--navy">Finance &amp; Gestion</span><span class="lvl">Bac+5</span></div>
+          <h3 class="pcard__code">BAC+5 Expert en Gestion de Patrimoine</h3>
+          <p class="pcard__titre">Ingénierie patrimoniale, investissements financiers et immobiliers, transmission · RNCP 38949</p>
+          <div class="pcard__foot">Niveau 7 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ MANAGEMENT & IA -->
+  <div class="filiere-block" id="management">
+    <div class="filiere-header">
+      <h2 class="h2">Management &amp; Intelligence Artificielle</h2>
+      <span class="fil-chip">1 / 1 publiée</span>
+    </div>
+    <div class="grid">
+
+      <a class="pcard" href="Management/BAC5-IA.html">
+        <div class="pcard__top"></div>
+        <div class="pcard__body">
+          <div class="pcard__row"><span class="badge" style="background:rgba(0,174,199,.15);color:var(--cyan-600);">Data &amp; IA</span><span class="lvl">Bac+5</span></div>
+          <h3 class="pcard__code">BAC+5 Manager de Projets Data &amp; IA</h3>
+          <p class="pcard__titre">Pilotage de projets d'intelligence artificielle, gouvernance de la donnée, conduite du changement · RNCP 38466</p>
+          <div class="pcard__foot">Niveau 7 · 24 mois<span class="spacer"></span>Voir la fiche →</div>
+        </div>
+      </a>
+
     </div>
   </div>
 
@@ -257,9 +360,11 @@
       <h4>Formations</h4>
       <a href="#rh">Ressources Humaines</a>
       <a href="#commerce">Commerce &amp; Management</a>
-      <a href="#immobilier">Immobilier &amp; Banque</a>
+      <a href="#immobilier">Immobilier</a>
+      <a href="#tourisme">Tourisme</a>
       <a href="#communication">Communication</a>
       <a href="#finance">Finance &amp; Gestion</a>
+      <a href="#management">Data &amp; IA</a>
     </div>
     <div>
       <h4>L'école</h4>
@@ -276,7 +381,7 @@
   <div class="footer__bar">
     <div class="footer__bar-inner">
       <span><strong style="color:#fff;">Homneo Business School</strong> · Belfort · Mulhouse · Wittelsheim · Ingersheim · Valenciennes</span>
-      <span>Source du catalogue complet : <a href="https://imt-formation.fr/" target="_blank" rel="noopener" style="display:inline;color:var(--navy-300);">imt-formation.fr</a></span>
+      <span>Source : <a href="https://imt-formation.fr/" target="_blank" rel="noopener" style="display:inline;color:var(--navy-300);">imt-formation.fr</a></span>
     </div>
   </div>
 </footer>
